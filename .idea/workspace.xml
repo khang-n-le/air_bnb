@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/configRouter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useOnClickOutside.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+    <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/Header/Desktop.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/Header/Mobile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +36,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add-hook" />
+    <option name="LAST_COMMIT_MESSAGE" value="add-hook" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
