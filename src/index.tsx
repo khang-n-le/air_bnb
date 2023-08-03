@@ -1,44 +1,21 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { GlobalStyle, theme } from './styled';
-import { publicRoutes } from './utils/routes';
+
 import { Provider } from 'react-redux';
 import { store } from 'app/store';
 import { ThemeProvider } from 'styled-components';
-import { Header } from './components/Layout';
+import { Router } from './configRouter';
+import { theme } from 'styled';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <Provider store={store}>
     <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <Router>
-          <GlobalStyle></GlobalStyle>
-          <Header></Header>
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              const Page = route.component;
-              const Layout = (route as any)?.layout ? (
-                (route as any)?.layout
-              ) : (route as any)?.layout === null ? (
-                Fragment
-              ) : (
-                <></>
-              );
-
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={<Page></Page>}
-                ></Route>
-              );
-            })}
-          </Routes>
-        </Router>
+        <Router></Router>
       </ThemeProvider>
     </React.StrictMode>
   </Provider>
