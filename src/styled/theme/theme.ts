@@ -40,23 +40,23 @@ const theme: DefaultTheme = {
     price: '#EB403D',
 
     primary: {
-      light: '#39B54A',
-      main: '#39B54A',
-      dark: '#005333',
+      light: '#ff5c79',
+      main: '#FF385C',
+      dark: '#E00B41',
       grey: '#BDBDBD',
       contrastText: '#fff',
     },
 
     secondary: {
-      light: '#ff4081',
-      main: '#f50057',
-      dark: '#c51162',
+      light: '#673191',
+      main: '#460479',
+      dark: '#320356',
       contrastText: '#fff',
     },
 
     text: {
-      primary: '#595959',
-      secondary: '#6C6C6C',
+      primary: '#222222',
+      secondary: '#717171',
       disabled: 'rgba(0, 0, 0, 0.38)',
       hint: 'rgba(0, 0, 0, 0.38)',
       lightGreen: '#7CB305',
@@ -75,7 +75,6 @@ const theme: DefaultTheme = {
       light: '#E0E0E0',
       main: '#D9D9D9',
       dark: '#bdbdbd',
-      green: '#239047',
     },
 
     skeleton: {

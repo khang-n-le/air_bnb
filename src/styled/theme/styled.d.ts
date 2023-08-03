@@ -64,7 +64,6 @@ declare module 'styled-components' {
         light: string;
         main: string;
         dark: string;
-        green: string;
       };
 
       skeleton: {
