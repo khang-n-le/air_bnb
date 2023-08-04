@@ -7,23 +7,8 @@ import { DEVICES } from 'utils/constants';
 import { publicRoutes } from './utils/routes';
 
 function App() {
-  React.useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const dispatch = useAppDispatch();
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const appDevice = useAppSelector(selectAppDevice);
-
-    if (appDevice.isFirstLoad) {
-      if (window.innerWidth <= 768) {
-        dispatch(initialDevice(DEVICES.MOBILE));
-      } else {
-        dispatch(initialDevice(DEVICES.DESKTOP));
-      }
-    }
-
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }, []);
+  const dispatch = useAppDispatch();
+  const appDevice = useAppSelector(selectAppDevice);
 
   return (
     <Router>

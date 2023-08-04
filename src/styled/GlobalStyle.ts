@@ -4,12 +4,17 @@ import { device } from './device';
 import { theme } from './theme/theme';
 
 export const GlobalStyle = createGlobalStyle`
+  :root {
+    --max-width: 100%;
+  }
+
   html,
   body {
     height: 100%;
     width: 100%;
     line-height: 1.5;
     font-weight: ${p => theme.font.weight.regular};
+    margin: 0px;
   }
 
   svg { vertical-align: baseline; }
