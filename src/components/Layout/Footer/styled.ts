@@ -89,19 +89,24 @@ export const CopyRightLeft = styled.ul`
   gap: 20px;
   padding-left: 0px;
   margin: 0px;
+  list-style: none;
 `;
 
 export const CopyRightLeftItem = styled.li`
   font-size: ${p => p.theme.font.size.xs};
   font-weight: ${p => p.theme.font.weight.normal};
+  cursor: pointer;
+  position: relative;
 
-  &:first-child::marker {
-    display: none;
+  &:before {
+    content: '.';
+    position: absolute;
+    left: -10px;
+    bottom: 6px;
   }
 
-  &::marker {
-    font-size: 5px;
-    bottom: 10px;
+  &:first-child::before {
+    display: none;
   }
 `;
 
