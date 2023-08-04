@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
    */
   font: {
     // family: `'Work Sans', sans-serif`,
-    family: `'Quicksand', sans-serif`,
+    family: `'Open Sans', sans-serif`,
     weight: {
       light: '300',
       normal: '400',
@@ -43,7 +43,7 @@ const theme: DefaultTheme = {
       light: '#ff5c79',
       main: '#FF385C',
       dark: '#E00B41',
-      grey: '#BDBDBD',
+      grey: '#F7F7F7',
       contrastText: '#fff',
     },
 

@@ -1,1 +1,5 @@
-export { LogoBranchIcon } from './LogoBranchIcon'
+export { LogoBranchIcon } from './LogoBranchIcon';
+export { GlobeIcon } from './GlobeIcon';
+export { FacebookSquareIcon } from './FacebookSquareIcon';
+export { TwitterSquareIcon } from './TwitterSquareIcon';
+export { IntegramSquareIcon } from './IntegramSquareIcon';
