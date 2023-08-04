@@ -18,9 +18,10 @@ export const ContentWrapper = styled.div`
 
 export const CopyRightWrapper = styled.div`
   width: 100%;
-
+  border-top: 1px solid ${p => p.theme.colors.border.main};
   display: flex;
   justify-content: space-between;
+  padding: 24px 0px;
 `;
 
 export const Title = styled.h2`
@@ -87,6 +88,7 @@ export const CopyRightLeft = styled.ul`
   display: flex;
   gap: 20px;
   padding-left: 0px;
+  margin: 0px;
 `;
 
 export const CopyRightLeftItem = styled.li`
