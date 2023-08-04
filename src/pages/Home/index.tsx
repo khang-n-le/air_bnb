@@ -1,11 +1,12 @@
 import React from 'react';
 import { ButtonWrapper, CButton, Wrapper } from './styled';
-import { useAppSelector } from 'app/hooks';
-import { selectAppDevice } from 'slice/appDeviceSlice';
+
+import { LogoBranchIcon } from 'components';
 
 const Home = () => {
   return (
     <Wrapper>
+      <LogoBranchIcon height={40}  width={40} color={"#8c8c8c"}></LogoBranchIcon>
       hello
       <ButtonWrapper>
         <CButton type="primary">Primary Button</CButton>

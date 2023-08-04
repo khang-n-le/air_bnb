@@ -1,0 +1,1 @@
+export { LogoBranchIcon } from './LogoBranchIcon'
