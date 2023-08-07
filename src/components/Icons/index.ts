@@ -1,4 +1,4 @@
-export { LogoBranchIcon } from './LogoBranchIcon';
+export { LogoBrandIcon } from './LogoBrandIcon';
 export { GlobeIcon } from './GlobeIcon';
 export { FacebookSquareIcon } from './FacebookSquareIcon';
 export { TwitterSquareIcon } from './TwitterSquareIcon';

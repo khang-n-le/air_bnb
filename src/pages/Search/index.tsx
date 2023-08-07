@@ -1,5 +1,5 @@
 import { ButtonWrapper, CButton, Wrapper } from '../Home/styled';
-import { LogoBranchIcon } from 'components';
+import { LogoBrandIcon } from 'components';
 import React from 'react';
 
 const Search = () => {
@@ -7,11 +7,11 @@ const Search = () => {
     <>
       {' '}
       <Wrapper>
-        <LogoBranchIcon
+        <LogoBrandIcon
           height={40}
           width={40}
           color={'#8c8c8c'}
-        ></LogoBranchIcon>
+        ></LogoBrandIcon>
         hello
         <ButtonWrapper>
           <CButton type="primary">Primary Button</CButton>
