@@ -39,6 +39,7 @@ declare module 'styled-components' {
         light: string;
         main: string;
         dark: string;
+        grey: string;
         contrastText: string;
       };
 
@@ -148,6 +149,8 @@ declare module 'styled-components' {
       sm: string;
       md: string;
       lg: string;
+      xl: string;
+      xxl: string;
     };
 
     /**

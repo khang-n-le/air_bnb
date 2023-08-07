@@ -8,7 +8,7 @@ const theme: DefaultTheme = {
    */
   font: {
     // family: `'Work Sans', sans-serif`,
-    family: `'Quicksand', sans-serif`,
+    family: `'Open Sans', sans-serif`,
     weight: {
       light: '300',
       normal: '400',
@@ -20,7 +20,7 @@ const theme: DefaultTheme = {
     size: {
       small: '9px',
       tiny: '11px',
-      xxs: '13px',
+      xxs: '12px',
       xs: '14px',
       sm: '16px',
       md: '18px',
@@ -43,7 +43,7 @@ const theme: DefaultTheme = {
       light: '#ff5c79',
       main: '#FF385C',
       dark: '#E00B41',
-      grey: '#BDBDBD',
+      grey: '#F7F7F7',
       contrastText: '#fff',
     },
 
@@ -66,8 +66,8 @@ const theme: DefaultTheme = {
       link: '#1890FF',
       orange: '#FF6347',
       white: '#fff',
-      main: '#39B54A',
-      dark: '#17431D',
+      main: '#FF385C',
+      dark: '#E00B41',
       black: 'black',
     },
 
@@ -121,8 +121,8 @@ const theme: DefaultTheme = {
    */
   shadows: {
     sm: '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)',
-    md: 'rgba(0, 0, 0, 0.3) 0px 1px 8px 0px',
-    lg: '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)',
+    md: '0 2px 4px rgba(0,0,0,0.18)',
+    lg: '0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05)',
     xl: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
   },
 
@@ -157,6 +157,8 @@ const theme: DefaultTheme = {
     sm: '3px',
     md: '6px',
     lg: '12px',
+    xl: '32px',
+    xxl: '40px'
   },
 
   /**
@@ -174,7 +176,7 @@ const theme: DefaultTheme = {
    * Transition
    */
   transition: {
-    duration: '0.5s',
+    duration: '0.25s',
   },
 };
 

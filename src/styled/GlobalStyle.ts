@@ -1,21 +1,40 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { device } from './device';
-import { theme } from './theme/theme';
+import { theme } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --max-width: 100%;
+    --max-width: 1120px;
+    --home-max-width: 2520px;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+  
+  h2,p {
+    margin: 0px;
+  }
+  
   html,
   body {
     height: 100%;
     width: 100%;
     line-height: 1.5;
-    font-weight: ${p => theme.font.weight.regular};
+    font-weight: ${p => theme.font.weight.normal};
+    font-weight: ${p => theme.font.size.xs};
+    font-family: ${p => theme.font.family};
     margin: 0px;
+    
+    .inner{
+      max-width:  var(--max-width);
+    }
+
+    .home-inner{
+      max-width: var(--home-max-width);
+    }
   }
+  
 
   svg { vertical-align: baseline; }
 
@@ -47,6 +66,4 @@ export const GlobalStyle = createGlobalStyle`
     width: 12px;
     height: 12px;
   }
-  
-
 `;

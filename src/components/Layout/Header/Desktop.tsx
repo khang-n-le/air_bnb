@@ -1,89 +1,221 @@
 import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
+import { Button, Divider, Dropdown } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import { LogoBrandIcon } from 'components/Icons/LogoBrandIcon';
-import { Header } from './Styled';
+import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
+import { GlobeIcon } from 'components/Icons';
+import { Bars } from 'components/Icons/Bars';
+import { ProfileUser } from 'components/Icons/ProfileUser';
+import { useState } from 'react';
 
 const items: MenuProps['items'] = [
   {
     key: '1',
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-        1st menu item
+      <a href="/">
+        Đăng ký
       </a>
     ),
   },
   {
     key: '2',
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-        2nd menu item
+      <a href="/">
+        Đăng nhập
       </a>
     ),
   },
   {
+    type: 'divider',
+  },
+  {
     key: '3',
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-        3rd menu item
+      <a href="/">
+        Cho thuê chỗ ở qua AirBnb
+      </a>
+    ),
+  },
+  {
+    key: '4',
+    label: (
+      <a href="/">
+        Trung tâm trợ giúp
       </a>
     ),
   },
 ];
 
 const Desktop = () => {
-  return <header>
-    <div className="container">
-      <div className="logo">
-        <a href="/">
-          <div className="logo-full">
-            <LogoBrandIcon width={120} height={60} color='#ff5a5f' />
-          </div>
-        </a>
-      </div>
-      <div className="search-bar">
-        <div>
-          <div>
-            <button>
-              <div>Địa điểm bất kỳ</div>
-            </button>
-            <span className='divider'></span>
-            <button>
-              <div>tuần bất kỳ</div>
-            </button>
-            <span className='divider'></span>
-            <button>
-              <div>Thêm khách</div>
-              <div>
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className="nav-bar">
-        <nav>
-          <div>
-            <a href="/">
-              <div>Cho thuê chỗ ở qua Airbnb</div>
-            </a>
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false)
+  const [isAddressSearch, setIsAddressSearch] = useState(false)
+
+  const openSearchBarByAddressHandler = () => {
+    setIsSearchBarOpen(true)
+    setIsAddressSearch(true)
+  }
+
+  const closeSearcBarHandler = () => {
+    console.log(isSearchBarOpen)
+    setIsSearchBarOpen(false)
+  }
+
+  return (
+    <>
+      <Header searchBarOpen={isSearchBarOpen}>
+        <Container className={'home-inner'}>
+          {/* Logo Wrapper */}
+          <LogoWrapper>
+            <LogoLink href="/">
+              <LogoLinkFull>
+                <LogoBrandIcon width={102} height={32} styles={{ display: 'block' }} />
+              </LogoLinkFull>
+            </LogoLink>
+          </LogoWrapper>
+
+          {/* Search Bar Wrapper */}
+          <SearchBarWrapper>
             <div>
-              <button type='button'>
-                <i className="fa-solid fa-earth-europe"></i>
-              </button>
+              {/* Search Button Group */}
+              <SearchButtonGroup searchBarOpen={isSearchBarOpen}>
+                <SearchButton onClick={openSearchBarByAddressHandler}>
+                  <SearchButtonLabel>Địa điểm bất kỳ</SearchButtonLabel>
+                </SearchButton>
+                <ButtonDivider />
+                <SearchButton onClick={openSearchBarByAddressHandler}>
+                  <SearchButtonLabel>tuần bất kỳ</SearchButtonLabel>
+                </SearchButton>
+                <ButtonDivider />
+                <SearchButton onClick={openSearchBarByAddressHandler}>
+                  <SearchButtonLabel>Thêm khách</SearchButtonLabel>
+                  <SearchIcon shape="circle" icon={<SearchOutlined />} />
+                </SearchButton>
+              </SearchButtonGroup>
+
+              {/* Search Nav*/}
+              <SearchNavWrapper searchBarOpen={isSearchBarOpen}>
+                <SearchNavContent>
+                  <SearchForm>
+                    <SearchNavBox>
+                      <SearchNavList>
+                        <SearchNavItem>
+                          <SearchNavButton type='text' size='large'>
+                            <SearchNavButtonLabel>
+                              Chỗ ở
+                            </SearchNavButtonLabel>
+                          </SearchNavButton>
+                        </SearchNavItem>
+                        <SearchNavItem>
+                          <SearchNavButton type='text' size='large'>
+                            <SearchNavButtonLabel>
+                              Trải nghiệm
+                            </SearchNavButtonLabel>
+                          </SearchNavButton>
+                        </SearchNavItem>
+                        <SearchNavItem>
+                          <SearchNavButton type='link' size='large'>
+                            <SearchNavButtonLabel>
+                              Trải nghiệm trực tuyến
+                            </SearchNavButtonLabel>
+                          </SearchNavButton>
+                        </SearchNavItem>
+                      </SearchNavList>
+                    </SearchNavBox>
+
+                    <SearchInputBox>
+                      <SearchInputFrame>
+                        <SearchInputAddressBox>
+                          <SearchInputItem>
+                            <SearchInputLabel htmlFor='location-input' onSearchByAddress={isAddressSearch}>
+                              <SearchInputTitle>
+                                Địa điểm
+                              </SearchInputTitle>
+                              <SearchInput placeholder='Tìm kiếm điểm đến' id='location-input' />
+                            </SearchInputLabel>
+                          </SearchInputItem>
+                        </SearchInputAddressBox>
+
+                        <SearchInputFrameDivider />
+
+                        <SearchInputRoomBox>
+                          <SearchInputItem>
+                            <SearchInputItemContent>
+                              <SearchInputItemWrapper>
+                                <SearchInputTitle>
+                                  Nhận phòng
+                                </SearchInputTitle>
+                                <SearchInputPlaceholder>
+                                  Thêm ngày
+                                </SearchInputPlaceholder>
+                              </SearchInputItemWrapper>
+                            </SearchInputItemContent>
+                          </SearchInputItem>
+
+                          <SearchInputFrameDivider />
+
+                          <SearchInputItem>
+                            <SearchInputItemContent>
+                              <SearchInputItemWrapper>
+                                <SearchInputTitle>
+                                  Trả phòng
+                                </SearchInputTitle>
+                                <SearchInputPlaceholder>
+                                  Thêm ngày
+                                </SearchInputPlaceholder>
+                              </SearchInputItemWrapper>
+                            </SearchInputItemContent>
+                          </SearchInputItem>
+                        </SearchInputRoomBox>
+
+                        <SearchInputFrameDivider />
+
+                        <SearchInputGuestBox>
+                          <SearchInputItemContent>
+                            <SearchInputItemWrapper>
+                              <SearchInputTitle>
+                                Khách
+                              </SearchInputTitle>
+                              <SearchInputPlaceholder>
+                                Thêm khách
+                              </SearchInputPlaceholder>
+                            </SearchInputItemWrapper>
+
+                            <SearchInputButtonBox>
+                              <SearchInputIconButton shape="circle" icon={<SearchOutlined />} size='large' />
+                            </SearchInputButtonBox>
+
+                          </SearchInputItemContent>
+                        </SearchInputGuestBox>
+
+                      </SearchInputFrame>
+                    </SearchInputBox>
+                  </SearchForm>
+                </SearchNavContent>
+              </SearchNavWrapper>
             </div>
-          </div>
-          <div>
-            <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-              <Button>
-                <div><i className="fa-solid fa-bars"></i></div>
-                <div><i className="fa-solid fa-circle-user"></i></div>
-              </Button>
-            </Dropdown>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>;
+          </SearchBarWrapper>
+
+          {/* NavBar Wrapper */}
+          <NavBarWrapper>
+            <NavBarContent>
+              <HostLink href="/">
+                Cho thuê chỗ ở qua Airbnb
+              </HostLink>
+              <LanguageIconButton shape="circle" icon={<GlobeIcon width={16} height={16} color='initial' />}></LanguageIconButton>
+              <ProfileDropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
+                <ProfileButton>
+                  <Bars width={16} height={16} styles={{ display: 'block' }} color='initial' />
+                  <ProfileUser width={32} height={32} styles={{ display: 'block' }} />
+                </ProfileButton>
+              </ProfileDropdown>
+            </NavBarContent>
+          </NavBarWrapper>
+        </Container>
+      </Header>
+
+      <Overlay searchBarOpen={isSearchBarOpen} onClick={closeSearcBarHandler} />
+    </>
+  )
 };
 
 export default Desktop;
