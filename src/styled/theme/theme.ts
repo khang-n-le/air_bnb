@@ -162,7 +162,7 @@ const theme: DefaultTheme = {
   },
 
   /**
-   * z-index.tsx
+   * z-index.ts
    */
   zIndex: {
     xs: 10,

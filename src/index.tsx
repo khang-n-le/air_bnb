@@ -7,6 +7,7 @@ import { store } from 'app/store';
 import { ThemeProvider } from 'styled-components';
 import { Router } from './configRouter';
 import { theme } from 'styled';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
