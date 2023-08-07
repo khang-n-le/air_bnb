@@ -8,7 +8,7 @@ import { CarouselData } from './data';
 const Home = () => {
   return (
     <Wrapper>
-      <CarouselMultipleItems slidesToShow={10}>
+      <CarouselMultipleItems>
         {CarouselData.map((item, index) => {
           return (
             <CategoryItem
