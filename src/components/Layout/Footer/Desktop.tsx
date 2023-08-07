@@ -26,8 +26,8 @@ import {
   GlobeIcon,
   IntegramSquareIcon,
   TwitterSquareIcon,
-} from '../../Icons';
-import { theme } from '../../../styled';
+} from 'components';
+import { theme } from 'styled';
 
 const Desktop = () => {
   return (

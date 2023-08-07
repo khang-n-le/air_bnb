@@ -20,7 +20,7 @@ const theme: DefaultTheme = {
     size: {
       small: '9px',
       tiny: '11px',
-      xxs: '13px',
+      xxs: '12px',
       xs: '14px',
       sm: '16px',
       md: '18px',
@@ -160,7 +160,7 @@ const theme: DefaultTheme = {
   },
 
   /**
-   * z-index.tsx
+   * z-index.ts
    */
   zIndex: {
     xs: 10,
