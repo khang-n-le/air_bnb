@@ -14,6 +14,6 @@ const Header = () => {
   };
 
   return renderElement[appDevice.device];
-};
+}
 
-export default Header;
+export default Header

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonWrapper, CButton, Wrapper } from './styled';
 
-import { CategoryItem, LogoBranchIcon } from 'components';
+import { CategoryItem, LogoBrandIcon } from 'components';
 import { CarouselMultipleItems } from 'components';
 import { CarouselData } from './data';
 
@@ -19,7 +19,7 @@ const Home = () => {
           );
         })}
       </CarouselMultipleItems>
-      <LogoBranchIcon height={40} width={40} color={'#8c8c8c'}></LogoBranchIcon>
+      <LogoBrandIcon height={40} width={40} color={'#8c8c8c'}></LogoBrandIcon>
       hello
       <ButtonWrapper>
         <CButton type="primary">Primary Button</CButton>

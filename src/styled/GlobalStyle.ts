@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     --max-width: 1120px;
     --home-max-width: 2520px;
   }
+
+  * {
+    box-sizing: border-box;
+  }
   
   h2,p {
     margin: 0px;
@@ -24,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
     
     .inner{
       max-width:  var(--max-width);
+    }
+
+    .home-inner{
+      max-width: var(--home-max-width);
     }
   }
   
