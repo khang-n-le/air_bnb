@@ -2,7 +2,7 @@ import type { MenuProps } from 'antd';
 import { Button, Divider, Dropdown } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { LogoBrandIcon } from 'components/Icons/LogoBrandIcon';
-import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
+import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './Styled';
 import { GlobeIcon } from 'components/Icons';
 import { Bars } from 'components/Icons/Bars';
 import { ProfileUser } from 'components/Icons/ProfileUser';
@@ -46,6 +46,33 @@ const items: MenuProps['items'] = [
   },
 ];
 
+const options = [
+  {
+    value: '1',
+    label: 'Not Identified',
+  },
+  {
+    value: '2',
+    label: 'Closed',
+  },
+  {
+    value: '3',
+    label: 'Communicated',
+  },
+  {
+    value: '4',
+    label: 'Identified',
+  },
+  {
+    value: '5',
+    label: 'Resolved',
+  },
+  {
+    value: '6',
+    label: 'Cancelled',
+  },
+]
+
 const Desktop = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false)
   const [isAddressSearch, setIsAddressSearch] = useState(false)
@@ -59,6 +86,14 @@ const Desktop = () => {
     console.log(isSearchBarOpen)
     setIsSearchBarOpen(false)
   }
+
+  const scrollHandler = () => {
+    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+      setIsSearchBarOpen(false)
+    }
+  }
+
+  window.onscroll = () => { scrollHandler() }
 
   return (
     <>
@@ -130,7 +165,19 @@ const Desktop = () => {
                               <SearchInputTitle>
                                 Địa điểm
                               </SearchInputTitle>
-                              <SearchInput placeholder='Tìm kiếm điểm đến' id='location-input' />
+                              <SearchInput showSearch
+                                allowClear
+                                suffixIcon={null}
+                                bordered={false}
+                                placeholder="Tìm kiếm điểm đến"
+                                optionFilterProp="children"
+                                filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                                filterSort={(optionA, optionB) =>
+                                  (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                }
+                                options={options}
+                                dropdownStyle={{ padding: '24' }}
+                                id='location-input' />
                             </SearchInputLabel>
                           </SearchInputItem>
                         </SearchInputAddressBox>
