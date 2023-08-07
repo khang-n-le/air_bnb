@@ -20,10 +20,8 @@ const CarouselMultipleItems = ({
 
   return (
     <>
-      <div>
-        <h2> Multiple items </h2>
-        <Slider {...settings}>{children}</Slider>
-      </div>
+      <h2> Multiple items </h2>
+      <Slider {...settings}>{children}</Slider>
     </>
   );
 };

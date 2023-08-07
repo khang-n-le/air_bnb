@@ -19,11 +19,6 @@ const Home = () => {
           );
         })}
       </CarouselMultipleItems>
-      <LogoBrandIcon height={40} width={40} color={'#8c8c8c'}></LogoBrandIcon>
-      hello
-      <ButtonWrapper>
-        <CButton type="primary">Primary Button</CButton>
-      </ButtonWrapper>
     </Wrapper>
   );
 };
