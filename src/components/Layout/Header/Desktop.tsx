@@ -1,53 +1,13 @@
 import type { MenuProps } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { LogoBrandIcon } from 'components/Icons/LogoBrandIcon';
-import {
-  ButtonDivider,
-  Container,
-  Header,
-  HostLink,
-  LanguageIconButton,
-  LogoLink,
-  LogoLinkFull,
-  LogoWrapper,
-  NavBarContent,
-  NavBarWrapper,
-  Overlay,
-  ProfileButton,
-  ProfileDropdown,
-  SearchBarWrapper,
-  SearchButton,
-  SearchButtonGroup,
-  SearchButtonLabel,
-  SearchForm,
-  SearchIcon,
-  SearchInput,
-  SearchInputAddressBox,
-  SearchInputBox,
-  SearchInputButtonBox,
-  SearchInputFrame,
-  SearchInputFrameDivider,
-  SearchInputGuestBox,
-  SearchInputIconButton,
-  SearchInputItem,
-  SearchInputItemContent,
-  SearchInputItemWrapper,
-  SearchInputLabel,
-  SearchInputPlaceholder,
-  SearchInputRoomBox,
-  SearchInputTitle,
-  SearchNavBox,
-  SearchNavButton,
-  SearchNavButtonLabel,
-  SearchNavContent,
-  SearchNavItem,
-  SearchNavList,
-  SearchNavWrapper,
-} from './styled';
+import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
 import { GlobeIcon } from 'components/Icons';
 import { Bars } from 'components/Icons/Bars';
 import { ProfileUser } from 'components/Icons/ProfileUser';
-import { useState } from 'react';
+import React from 'react';
+import { useAppDispatch } from 'app/hooks';
+import { findAllLocation } from 'slice';
 
 const items: MenuProps['items'] = [
   {
@@ -71,19 +31,49 @@ const items: MenuProps['items'] = [
   },
 ];
 
-const Desktop = () => {
-  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
-  const [isAddressSearch, setIsAddressSearch] = useState(false);
+const Desktop = ({ locationList }: { locationList: any[] }) => {
+  const [isSearchBarOpen, setIsSearchBarOpen] = React.useState(false);
+  const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
+  const [selectedLocationId, setSelecedLocationId] = React.useState()
+
+  React.useEffect(() => {
+    if (locationList.length > 0) {
+      const locationNameListArr = locationList.map(location => {
+        return {
+          value: location.id,
+          label: `${location.tenViTri}, ${location.tinhThanh}`
+        }
+      })
+      setLocationNameList(locationNameListArr)
+    }
+
+  }, [locationList])
 
   const openSearchBarByAddressHandler = () => {
     setIsSearchBarOpen(true);
-    setIsAddressSearch(true);
   };
 
   const closeSearcBarHandler = () => {
-    console.log(isSearchBarOpen);
-    setIsSearchBarOpen(false);
-  };
+    console.log(isSearchBarOpen)
+    setIsSearchBarOpen(false)
+  }
+
+  const scrollHandler = () => {
+    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+      setIsSearchBarOpen(false)
+    }
+  }
+
+  window.onscroll = () => { scrollHandler() }
+
+  const submitSearchHandler = (event: any) => {
+    console.log(event)
+    event.preventDefault()
+  }
+
+  const changeLocationHandler = (value: any) => {
+    setSelecedLocationId(value)
+  }
 
   return (
     <>
@@ -124,7 +114,7 @@ const Desktop = () => {
               {/* Search Nav*/}
               <SearchNavWrapper searchBarOpen={isSearchBarOpen}>
                 <SearchNavContent>
-                  <SearchForm>
+                  <SearchForm onSubmit={submitSearchHandler}>
                     <SearchNavBox>
                       <SearchNavList>
                         <SearchNavItem>
@@ -153,14 +143,24 @@ const Desktop = () => {
                       <SearchInputFrame>
                         <SearchInputAddressBox>
                           <SearchInputItem>
-                            <SearchInputLabel
-                              htmlFor="location-input"
-                              onSearchByAddress={isAddressSearch}
-                            >
-                              <SearchInputTitle>Địa điểm</SearchInputTitle>
-                              <SearchInput
+                            <SearchInputLabel htmlFor='location-input'>
+                              <SearchInputTitle>
+                                Địa điểm
+                              </SearchInputTitle>
+                              <SearchInput showSearch
+                                allowClear
+                                suffixIcon={null}
+                                bordered={false}
                                 placeholder="Tìm kiếm điểm đến"
-                                id="location-input"
+                                optionFilterProp="children"
+                                filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                                filterSort={(optionA, optionB) =>
+                                  (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                }
+                                options={locationNameList}
+                                dropdownStyle={{ padding: '24' }}
+                                id='location-input'
+                                onChange={changeLocationHandler}
                               />
                             </SearchInputLabel>
                           </SearchInputItem>
@@ -207,6 +207,7 @@ const Desktop = () => {
 
                             <SearchInputButtonBox>
                               <SearchInputIconButton
+                                htmlType="submit"
                                 shape="circle"
                                 icon={<SearchOutlined />}
                                 size="large"

@@ -6,8 +6,8 @@ import locationReducer from 'slice/locationSlice';
 
 const rootReducer = combineReducers({
   account: accountReducer,
-  appDevice: appDeviceReducer,
   location: locationReducer,
+  appDevice: appDeviceReducer,
 });
 
 export default rootReducer;
