@@ -1,29 +1,21 @@
 import React from 'react';
-import { ButtonWrapper, CButton, Wrapper } from './styled';
 
-import { CategoryItem, LogoBrandIcon } from 'components';
-import { CarouselMultipleItems, WrapperComponent } from 'components';
-import { CarouselData } from './data';
+import { useAppSelector } from 'app/hooks';
+import { selectAppDevice } from 'slice';
+import { DEVICES } from 'utils';
+import Desktop from './Desktop';
+import Mobile from './Mobile';
 
 const Home = () => {
-  return (
-    <WrapperComponent>
-      <Wrapper>
-        <CarouselMultipleItems slidesToShow={10}>
-          {CarouselData.map((item, index) => {
-            return (
-              <CategoryItem
-                key={index}
-                title={item.title}
-                image={item.url}
-              ></CategoryItem>
-            );
-          })}
-        </CarouselMultipleItems>
-      </Wrapper>
-    </WrapperComponent>
+  const appDevice = useAppSelector(selectAppDevice);
 
-  );
+  const RenderElement = {
+    [DEVICES.DESKTOP]: <Desktop></Desktop>,
+    [DEVICES.TABLET]: <Mobile></Mobile>,
+    [DEVICES.MOBILE]: <Desktop></Desktop>,
+  };
+
+  return RenderElement[appDevice.device];
 };
 
 export default Home;

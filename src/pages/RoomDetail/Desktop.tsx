@@ -1,5 +1,7 @@
+import { Wrapper } from './styled';
+
 const Desktop = () => {
-  return <>RoomDetail</>;
+  return <Wrapper>RoomDetail</Wrapper>;
 };
 
 export default Desktop;

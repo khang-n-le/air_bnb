@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Desktop.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Mobile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/styled.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Home/Desktop.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Home/Mobile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer/Desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer/Desktop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer/styled.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Wrapper/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Wrapper/styled.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/configRouter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Desktop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/styled.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slice/appDeviceSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/appDeviceSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styled/GlobalStyle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styled/GlobalStyle.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +76,7 @@
       <workItem from="1691214185826" duration="6841000" />
       <workItem from="1691380521766" duration="11922000" />
       <workItem from="1691454732867" duration="2414000" />
-      <workItem from="1691457293517" duration="4566000" />
+      <workItem from="1691457293517" duration="10825000" />
     </task>
     <servers />
   </component>
@@ -95,7 +103,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Layout/Footer/Desktop.tsx</url>
-          <line>36</line>
+          <line>40</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
