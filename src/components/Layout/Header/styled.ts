@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { Button, Dropdown, Select } from 'antd'
+import { Button, Dropdown, Form, Select } from 'antd'
 
 interface Props {
     searchBarOpen?: boolean,
-    onSearchByAddress?: boolean
 }
 
 export const Header = styled.header<Props>`
@@ -435,7 +434,7 @@ export const SearchInput = styled(Select)`
     }
 
     &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-item{
-        line-height: 24px;
+        line-height: 21px;
         font-weight: 700;
         color: ${p => p.theme.colors.text.primary};
     }
@@ -464,7 +463,7 @@ export const SearchInputIconButton = styled(Button)`
 
     &:hover {
         color: ${p => p.theme.colors.white} !important;
-        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.dark}, ${p => p.theme.colors.secondary.main});
+        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.main}, ${p => p.theme.colors.secondary.light});
     }
 `
 

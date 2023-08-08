@@ -1,86 +1,57 @@
 import type { MenuProps } from 'antd';
-import { Button, Divider, Dropdown } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { LogoBrandIcon } from 'components/Icons/LogoBrandIcon';
-import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './Styled';
+import { ButtonDivider, Container, Header, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
 import { GlobeIcon } from 'components/Icons';
 import { Bars } from 'components/Icons/Bars';
 import { ProfileUser } from 'components/Icons/ProfileUser';
-import { useState } from 'react';
+import React from 'react';
+import { useAppDispatch } from 'app/hooks';
+import { findAllLocation } from 'slice';
 
 const items: MenuProps['items'] = [
   {
     key: '1',
-    label: (
-      <a href="/">
-        Đăng ký
-      </a>
-    ),
+    label: <a href="/">Đăng ký</a>,
   },
   {
     key: '2',
-    label: (
-      <a href="/">
-        Đăng nhập
-      </a>
-    ),
+    label: <a href="/">Đăng nhập</a>,
   },
   {
     type: 'divider',
   },
   {
     key: '3',
-    label: (
-      <a href="/">
-        Cho thuê chỗ ở qua AirBnb
-      </a>
-    ),
+    label: <a href="/">Cho thuê chỗ ở qua AirBnb</a>,
   },
   {
     key: '4',
-    label: (
-      <a href="/">
-        Trung tâm trợ giúp
-      </a>
-    ),
+    label: <a href="/">Trung tâm trợ giúp</a>,
   },
 ];
 
-const options = [
-  {
-    value: '1',
-    label: 'Not Identified',
-  },
-  {
-    value: '2',
-    label: 'Closed',
-  },
-  {
-    value: '3',
-    label: 'Communicated',
-  },
-  {
-    value: '4',
-    label: 'Identified',
-  },
-  {
-    value: '5',
-    label: 'Resolved',
-  },
-  {
-    value: '6',
-    label: 'Cancelled',
-  },
-]
+const Desktop = ({ locationList }: { locationList: any[] }) => {
+  const [isSearchBarOpen, setIsSearchBarOpen] = React.useState(false);
+  const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
+  const [selectedLocationId, setSelecedLocationId] = React.useState()
 
-const Desktop = () => {
-  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false)
-  const [isAddressSearch, setIsAddressSearch] = useState(false)
+  React.useEffect(() => {
+    if (locationList.length > 0) {
+      const locationNameListArr = locationList.map(location => {
+        return {
+          value: location.id,
+          label: `${location.tenViTri}, ${location.tinhThanh}`
+        }
+      })
+      setLocationNameList(locationNameListArr)
+    }
+
+  }, [locationList])
 
   const openSearchBarByAddressHandler = () => {
-    setIsSearchBarOpen(true)
-    setIsAddressSearch(true)
-  }
+    setIsSearchBarOpen(true);
+  };
 
   const closeSearcBarHandler = () => {
     console.log(isSearchBarOpen)
@@ -95,6 +66,15 @@ const Desktop = () => {
 
   window.onscroll = () => { scrollHandler() }
 
+  const submitSearchHandler = (event: any) => {
+    console.log(event)
+    event.preventDefault()
+  }
+
+  const changeLocationHandler = (value: any) => {
+    setSelecedLocationId(value)
+  }
+
   return (
     <>
       <Header searchBarOpen={isSearchBarOpen}>
@@ -103,7 +83,11 @@ const Desktop = () => {
           <LogoWrapper>
             <LogoLink href="/">
               <LogoLinkFull>
-                <LogoBrandIcon width={102} height={32} styles={{ display: 'block' }} />
+                <LogoBrandIcon
+                  width={102}
+                  height={32}
+                  styles={{ display: 'block' }}
+                />
               </LogoLinkFull>
             </LogoLink>
           </LogoWrapper>
@@ -130,25 +114,23 @@ const Desktop = () => {
               {/* Search Nav*/}
               <SearchNavWrapper searchBarOpen={isSearchBarOpen}>
                 <SearchNavContent>
-                  <SearchForm>
+                  <SearchForm onSubmit={submitSearchHandler}>
                     <SearchNavBox>
                       <SearchNavList>
                         <SearchNavItem>
-                          <SearchNavButton type='text' size='large'>
-                            <SearchNavButtonLabel>
-                              Chỗ ở
-                            </SearchNavButtonLabel>
+                          <SearchNavButton type="text" size="large">
+                            <SearchNavButtonLabel>Chỗ ở</SearchNavButtonLabel>
                           </SearchNavButton>
                         </SearchNavItem>
                         <SearchNavItem>
-                          <SearchNavButton type='text' size='large'>
+                          <SearchNavButton type="text" size="large">
                             <SearchNavButtonLabel>
                               Trải nghiệm
                             </SearchNavButtonLabel>
                           </SearchNavButton>
                         </SearchNavItem>
                         <SearchNavItem>
-                          <SearchNavButton type='link' size='large'>
+                          <SearchNavButton type="link" size="large">
                             <SearchNavButtonLabel>
                               Trải nghiệm trực tuyến
                             </SearchNavButtonLabel>
@@ -161,7 +143,7 @@ const Desktop = () => {
                       <SearchInputFrame>
                         <SearchInputAddressBox>
                           <SearchInputItem>
-                            <SearchInputLabel htmlFor='location-input' onSearchByAddress={isAddressSearch}>
+                            <SearchInputLabel htmlFor='location-input'>
                               <SearchInputTitle>
                                 Địa điểm
                               </SearchInputTitle>
@@ -175,9 +157,11 @@ const Desktop = () => {
                                 filterSort={(optionA, optionB) =>
                                   (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
                                 }
-                                options={options}
+                                options={locationNameList}
                                 dropdownStyle={{ padding: '24' }}
-                                id='location-input' />
+                                id='location-input'
+                                onChange={changeLocationHandler}
+                              />
                             </SearchInputLabel>
                           </SearchInputItem>
                         </SearchInputAddressBox>
@@ -188,9 +172,7 @@ const Desktop = () => {
                           <SearchInputItem>
                             <SearchInputItemContent>
                               <SearchInputItemWrapper>
-                                <SearchInputTitle>
-                                  Nhận phòng
-                                </SearchInputTitle>
+                                <SearchInputTitle>Nhận phòng</SearchInputTitle>
                                 <SearchInputPlaceholder>
                                   Thêm ngày
                                 </SearchInputPlaceholder>
@@ -203,9 +185,7 @@ const Desktop = () => {
                           <SearchInputItem>
                             <SearchInputItemContent>
                               <SearchInputItemWrapper>
-                                <SearchInputTitle>
-                                  Trả phòng
-                                </SearchInputTitle>
+                                <SearchInputTitle>Trả phòng</SearchInputTitle>
                                 <SearchInputPlaceholder>
                                   Thêm ngày
                                 </SearchInputPlaceholder>
@@ -219,21 +199,22 @@ const Desktop = () => {
                         <SearchInputGuestBox>
                           <SearchInputItemContent>
                             <SearchInputItemWrapper>
-                              <SearchInputTitle>
-                                Khách
-                              </SearchInputTitle>
+                              <SearchInputTitle>Khách</SearchInputTitle>
                               <SearchInputPlaceholder>
                                 Thêm khách
                               </SearchInputPlaceholder>
                             </SearchInputItemWrapper>
 
                             <SearchInputButtonBox>
-                              <SearchInputIconButton shape="circle" icon={<SearchOutlined />} size='large' />
+                              <SearchInputIconButton
+                                htmlType="submit"
+                                shape="circle"
+                                icon={<SearchOutlined />}
+                                size="large"
+                              />
                             </SearchInputButtonBox>
-
                           </SearchInputItemContent>
                         </SearchInputGuestBox>
-
                       </SearchInputFrame>
                     </SearchInputBox>
                   </SearchForm>
@@ -245,14 +226,28 @@ const Desktop = () => {
           {/* NavBar Wrapper */}
           <NavBarWrapper>
             <NavBarContent>
-              <HostLink href="/">
-                Cho thuê chỗ ở qua Airbnb
-              </HostLink>
-              <LanguageIconButton shape="circle" icon={<GlobeIcon width={16} height={16} color='initial' />}></LanguageIconButton>
-              <ProfileDropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
+              <HostLink href="/">Cho thuê chỗ ở qua Airbnb</HostLink>
+              <LanguageIconButton
+                shape="circle"
+                icon={<GlobeIcon width={16} height={16} color="initial" />}
+              ></LanguageIconButton>
+              <ProfileDropdown
+                menu={{ items }}
+                placement="bottomRight"
+                trigger={['click']}
+              >
                 <ProfileButton>
-                  <Bars width={16} height={16} styles={{ display: 'block' }} color='initial' />
-                  <ProfileUser width={32} height={32} styles={{ display: 'block' }} />
+                  <Bars
+                    width={16}
+                    height={16}
+                    styles={{ display: 'block' }}
+                    color="initial"
+                  />
+                  <ProfileUser
+                    width={32}
+                    height={32}
+                    styles={{ display: 'block' }}
+                  />
                 </ProfileButton>
               </ProfileDropdown>
             </NavBarContent>
@@ -262,7 +257,7 @@ const Desktop = () => {
 
       <Overlay searchBarOpen={isSearchBarOpen} onClick={closeSearcBarHandler} />
     </>
-  )
+  );
 };
 
 export default Desktop;

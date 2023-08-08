@@ -1,15 +1,17 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://dummyjson.com',
+  baseURL: 'https://airbnbnew.cybersoft.edu.vn/api',
   headers: {
     'Content-Type': 'application/json',
+    tokenCybersoft:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCBTw6FuZyAwNyIsIkhldEhhblN0cmluZyI6IjE5LzEyLzIwMjMiLCJIZXRIYW5UaW1lIjoiMTcwMjk0NDAwMDAwMCIsIm5iZiI6MTY3OTg1MDAwMCwiZXhwIjoxNzAzMDkxNjAwfQ.28D2Nfp6Hy4C5u8pvZDIxH2pzlYoKIqgfsJLI_Dque4',
   },
 });
 
 // Add a response interceptor
 axiosClient.interceptors.response.use(
-  response => {
+  (response: any) => {
     if (response && response.data) {
       return response.data;
     }
@@ -19,5 +21,9 @@ axiosClient.interceptors.response.use(
     throw error;
   }
 );
+
+export const updateTokenBearer = (token: string) => {
+  axiosClient.defaults.headers.common.Authorization = token;
+};
 
 export default axiosClient;

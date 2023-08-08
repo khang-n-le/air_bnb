@@ -7,12 +7,21 @@ import { Footer, Header } from './components';
 import { publicRoutes } from './utils/routes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
+import { findAllLocation } from './slice';
 
 export const Router = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [pathName, setPathName] = React.useState<string>('');
 
   const appDevice = useAppSelector(selectAppDevice);
+
+  React.useEffect(() => {
+    const getAllLocation = async () => {
+      await dispatch(findAllLocation({}));
+    };
+
+    getAllLocation();
+  }, []);
 
   React.useEffect(() => {
     if (appDevice.isFirstLoad) {
