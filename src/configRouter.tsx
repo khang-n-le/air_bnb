@@ -54,32 +54,31 @@ export const Router = (): JSX.Element => {
   return (
     <Wrapper>
       <Header></Header>
-      <ContentWrapper isHomePage={pathName == '/'}>
-        <BrowserRouter>
-          <GlobalStyle></GlobalStyle>
+      <BrowserRouter>
+        <GlobalStyle></GlobalStyle>
 
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              const Page = route.component;
-              const Layout = (route as any)?.layout ? (
-                (route as any)?.layout
-              ) : (route as any)?.layout === null ? (
-                Fragment
-              ) : (
-                <></>
-              );
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+            const Layout = (route as any)?.layout ? (
+              (route as any)?.layout
+            ) : (route as any)?.layout === null ? (
+              Fragment
+            ) : (
+              <></>
+            );
 
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={<Page></Page>}
-                ></Route>
-              );
-            })}
-          </Routes>
-        </BrowserRouter>
-      </ContentWrapper>
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={<Page></Page>}
+              ></Route>
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+
       {pathName != '/' && <Footer></Footer>}
     </Wrapper>
   );
@@ -105,4 +104,4 @@ const ContentWrapper = styled.div<{ isHomePage?: boolean }>`
   @media only screen and (max-width: 1440px) {
     padding: 0px 40px;
   }
-`;
+`

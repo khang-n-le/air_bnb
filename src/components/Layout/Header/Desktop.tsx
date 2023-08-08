@@ -8,6 +8,7 @@ import { ProfileUser } from 'components/Icons/ProfileUser';
 import React from 'react';
 import { useAppDispatch } from 'app/hooks';
 import { findAllLocation } from 'slice';
+import { Wrapper } from 'pages/Home/styled';
 
 const items: MenuProps['items'] = [
   {
@@ -54,7 +55,6 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
   };
 
   const closeSearcBarHandler = () => {
-    console.log(isSearchBarOpen)
     setIsSearchBarOpen(false)
   }
 
@@ -67,7 +67,6 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
   window.onscroll = () => { scrollHandler() }
 
   const submitSearchHandler = (event: any) => {
-    console.log(event)
     event.preventDefault()
   }
 
@@ -78,7 +77,7 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
   return (
     <>
       <Header searchBarOpen={isSearchBarOpen}>
-        <Container className={'home-inner'}>
+        <Container className='home-inner'>
           {/* Logo Wrapper */}
           <LogoWrapper>
             <LogoLink href="/">

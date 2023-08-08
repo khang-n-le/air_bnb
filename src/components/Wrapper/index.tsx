@@ -8,8 +8,6 @@ interface WrapperProps {
 }
 
 const WrapperComponent = ({ children, maxWidth }: WrapperProps) => {
-    const location = useLocation();
-
     return <Wrapper maxWidth={maxWidth}>{children}</Wrapper>
 }
 
