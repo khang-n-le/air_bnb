@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { Button, Dropdown } from 'antd'
+import { Button, Dropdown, Form, Select } from 'antd'
 
 interface Props {
     searchBarOpen?: boolean,
-    onSearchByAddress?: boolean
 }
 
 export const Header = styled.header<Props>`
@@ -417,17 +416,35 @@ export const SearchInputPlaceholder = styled.p`
     color: ${p => p.theme.colors.text.secondary};
 `
 
-export const SearchInput = styled.input`
-    border: none;
-    font-size: ${p => p.theme.font.size.xs};
-    font-weight: ${p => p.theme.font.weight.light};
-    color: ${p => p.theme.colors.text.primary};
-    line-height: 18px;
-    text-overflow: ellipsis;
-    background-color: transparent;
+export const SearchInput = styled(Select)`
+    width: 100%;
 
-    &:focus {
-        outline: none;
+    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+        padding: 0;
+        height: 22px;
+    }
+
+    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input{
+        height: 22px;
+    }
+
+    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-search {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+    }
+
+    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-item{
+        line-height: 21px;
+        font-weight: 700;
+        color: ${p => p.theme.colors.text.primary};
+    }
+
+    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-placeholder{
+        line-height: 22px;
+        color: ${p => p.theme.colors.text.secondary};
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: ${p => p.theme.font.weight.normal};
     }
 `
 
@@ -446,7 +463,7 @@ export const SearchInputIconButton = styled(Button)`
 
     &:hover {
         color: ${p => p.theme.colors.white} !important;
-        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.dark}, ${p => p.theme.colors.secondary.main});
+        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.main}, ${p => p.theme.colors.secondary.light});
     }
 `
 

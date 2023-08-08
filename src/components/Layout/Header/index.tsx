@@ -15,7 +15,7 @@ const Header = () => {
   }, [location.list]);
 
   const renderElement = {
-    [DEVICES.DESKTOP]: <Desktop />,
+    [DEVICES.DESKTOP]: <Desktop locationList={location.list} />,
     [DEVICES.MOBILE]: <Mobile />,
     [DEVICES.TABLET]: <Mobile />,
   };
