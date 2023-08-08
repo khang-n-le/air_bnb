@@ -4,7 +4,7 @@ import { selectAppDevice } from 'slice/appDeviceSlice';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
 import React from 'react';
-import { getOneRoom } from '../../slice/roomSilce';
+import { getOneRoom } from 'slice/roomSilce';
 
 const RoomDetail = () => {
   const appDevice = useAppSelector(selectAppDevice);
@@ -14,7 +14,6 @@ const RoomDetail = () => {
   React.useEffect(() => {
     const getDetail = async () => {
       const data = await dispatch(getOneRoom({ id: '1' })).unwrap();
-      console.log('data1', (data as any).content);
       setRoomDetail((data as any).content);
     };
 

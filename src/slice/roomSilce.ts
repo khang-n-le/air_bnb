@@ -20,11 +20,11 @@ export const getOneRoom = createAsyncThunk(
   }
 );
 
-interface IInitState {
+interface InitialState {
   currentRoom: any;
 }
 
-const initState: IInitState = {
+const initState: InitialState = {
   currentRoom: {},
 };
 
@@ -40,5 +40,5 @@ export const {} = actions;
 
 export default roomReducer;
 
-export const selectRoom = (state: RootState): IInitState =>
-  state.room as IInitState;
+export const selectRoom = (state: RootState): InitialState =>
+  state.room as InitialState;
