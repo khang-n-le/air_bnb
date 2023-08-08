@@ -26,13 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${p => theme.font.family};
     margin: 0px;
     
-    .inner{
-      max-width:  var(--max-width);
-    }
 
-    .home-inner{
-      max-width: var(--home-max-width);
-    }
   }
   
 

@@ -10,10 +10,6 @@ const Header = () => {
   const appDevice = useAppSelector(selectAppDevice);
   const location = useAppSelector(selectLocation);
 
-  React.useEffect(() => {
-    console.log('data1', location.list);
-  }, [location.list]);
-
   const renderElement = {
     [DEVICES.DESKTOP]: <Desktop locationList={location.list} />,
     [DEVICES.MOBILE]: <Mobile />,

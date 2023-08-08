@@ -1,12 +1,10 @@
-import React from 'react';
-
-import { useAppSelector } from 'app/hooks';
-import { selectAppDevice } from 'slice';
 import { DEVICES } from 'utils';
+import { useAppSelector } from 'app/hooks';
+import { selectAppDevice } from 'slice/appDeviceSlice';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
 
-const Home = () => {
+const RoomDetail = () => {
   const appDevice = useAppSelector(selectAppDevice);
 
   const RenderElement = {
@@ -18,4 +16,4 @@ const Home = () => {
   return RenderElement[appDevice.device];
 };
 
-export default Home;
+export default RoomDetail;

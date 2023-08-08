@@ -1,5 +1,5 @@
-import Slider from 'react-slick';
 import React, { ReactElement } from 'react';
+import { CSlider } from './styled';
 
 interface CarouselMultipleItems {
   children: ReactElement[];
@@ -10,18 +10,40 @@ const CarouselMultipleItems = ({
   children,
   slidesToShow,
 }: CarouselMultipleItems) => {
+  const [countSlider, setCountSlider] = React.useState(1);
+
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: slidesToShow || 3,
-    slidesToScroll: slidesToShow || 3,
+    slidesToShow: slidesToShow || countSlider,
+    slidesToScroll: slidesToShow || countSlider,
+    slideWidth: 1200,
+    slideSpacing: 30,
   };
+
+  React.useEffect(() => {
+    const windowHeight = (): void => {
+      window.document.getElementsByClassName('slick-list')[0]?.clientWidth &&
+        setCountSlider(
+          window.document.getElementsByClassName('slick-list')[0].clientWidth /
+            100
+        );
+    };
+
+    window.addEventListener('resize', windowHeight);
+
+    windowHeight();
+  }, [window.innerWidth]);
+
+  // React.useEffect(() => {}, [
+  //   window.document.getElementsByClassName('slick-list')[0]?.clientWidth,
+  // ]);
 
   return (
     <>
       <h2> Multiple items </h2>
-      <Slider {...settings}>{children}</Slider>
+      <CSlider {...settings}>{children}</CSlider>
     </>
   );
 };

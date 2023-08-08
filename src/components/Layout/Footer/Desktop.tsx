@@ -28,12 +28,16 @@ import {
   TwitterSquareIcon,
 } from 'components';
 import { theme } from 'styled';
+import { useAppSelector } from 'app/hooks';
+import { selectAppDevice } from 'slice';
 
 const Desktop = () => {
+  const appDevice = useAppSelector(selectAppDevice);
+
   return (
     <Wrapper>
       <ContentWrapper>
-        <ContentTopWrapper className={'inner'}>
+        <ContentTopWrapper maxWidth={appDevice.maxWidth}>
           <TitleWrapper>
             <Title>
               Khám phá các lựa chọn khác tại và xung quanh Williamstown North
@@ -51,7 +55,7 @@ const Desktop = () => {
         </ContentTopWrapper>
       </ContentWrapper>
       <ContentWrapper>
-        <ContentBottomWrapper className={'inner'}>
+        <ContentBottomWrapper maxWidth={appDevice.maxWidth}>
           <ServicesWrapper>
             {ServiceData.map((item, index) => {
               return (
@@ -68,7 +72,7 @@ const Desktop = () => {
           </ServicesWrapper>
         </ContentBottomWrapper>
       </ContentWrapper>
-      <CopyRightWrapper className={'inner'}>
+      <CopyRightWrapper maxWidth={appDevice.maxWidth}>
         <CopyRightLeft>
           <CopyRightLeftItem>© 2023 Airbnb, Inc.</CopyRightLeftItem>
           <CopyRightLeftItem>Quyền riêng tư</CopyRightLeftItem>

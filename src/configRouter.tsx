@@ -32,7 +32,6 @@ export const Router = (): JSX.Element => {
       }
     }
 
-    console.log('data1', window.location.pathname);
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   }, []);
@@ -55,30 +54,32 @@ export const Router = (): JSX.Element => {
     <Wrapper>
       <Header></Header>
       <ContentWrapper isHomePage={pathName == '/'}>
-        <BrowserRouter>
-          <GlobalStyle></GlobalStyle>
+        <Content maxWidth={appDevice.maxWidth}>
+          <BrowserRouter>
+            <GlobalStyle></GlobalStyle>
 
-          <Routes>
-            {publicRoutes.map((route, index) => {
-              const Page = route.component;
-              const Layout = (route as any)?.layout ? (
-                (route as any)?.layout
-              ) : (route as any)?.layout === null ? (
-                Fragment
-              ) : (
-                <></>
-              );
+            <Routes>
+              {publicRoutes.map((route, index) => {
+                const Page = route.component;
+                const Layout = (route as any)?.layout ? (
+                  (route as any)?.layout
+                ) : (route as any)?.layout === null ? (
+                  Fragment
+                ) : (
+                  <></>
+                );
 
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={<Page></Page>}
-                ></Route>
-              );
-            })}
-          </Routes>
-        </BrowserRouter>
+                return (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={<Page></Page>}
+                  ></Route>
+                );
+              })}
+            </Routes>
+          </BrowserRouter>
+        </Content>
       </ContentWrapper>
       {pathName != '/' && <Footer></Footer>}
     </Wrapper>
@@ -94,15 +95,20 @@ const Wrapper = styled.div`
   min-height: calc(calc(var(--vh, 1vh) * 100) - 1px);
   height: calc(calc(var(--vh, 1vh) * 100) - 1px);
 `;
-
+// max-width: ${p =>
+//     p.isHomePage ? 'var(--home-max-width)' : 'var(--max-width)'};
 const ContentWrapper = styled.div<{ isHomePage?: boolean }>`
-  max-width: ${p =>
-    p.isHomePage ? 'var(--home-max-width)' : 'var(--max-width)'};
   width: 100%;
-
+  display: flex;
+  justify-content: center;
   padding: 0px 80px;
 
   @media only screen and (max-width: 1440px) {
     padding: 0px 40px;
   }
+`;
+
+const Content = styled.div<{ maxWidth: string }>`
+  max-width: ${p => p.maxWidth};
+  width: 100%;
 `;

@@ -1,4 +1,4 @@
-import { Home, Search } from '../pages';
+import { Home, Search, RoomDetail } from '../pages';
 
 const publicRoutes = [
   {
@@ -12,6 +12,11 @@ const publicRoutes = [
   {
     path: '/upload',
     component: '',
+    layout: '',
+  },
+  {
+    path: '/room/:id',
+    component: RoomDetail,
     layout: '',
   },
 ];

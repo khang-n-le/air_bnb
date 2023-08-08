@@ -21,17 +21,23 @@ export const initialDevice = createAsyncThunk(
 interface AppDeviceState {
   device: DEVICES;
   isFirstLoad: boolean;
+  maxWidth: string;
 }
 
 const initialState: AppDeviceState = {
   device: DEVICES.DESKTOP,
   isFirstLoad: true,
+  maxWidth: '1120px',
 };
 
 const appDeviceSlice = createSlice({
   name: 'appDevice',
   initialState,
-  reducers: {},
+  reducers: {
+    handleChangeMaxWidth: (state, action) => {
+      state.maxWidth = action.payload.maxWidth;
+    },
+  },
   extraReducers: builder => {
     builder.addCase(initialDevice.fulfilled, (state, { payload }) => {
       state.device = payload as DEVICES;
@@ -42,7 +48,7 @@ const appDeviceSlice = createSlice({
 
 const { actions, reducer: appDeviceReducer } = appDeviceSlice;
 
-export const {} = actions;
+export const { handleChangeMaxWidth } = actions;
 
 export default appDeviceReducer;
 
