@@ -9,7 +9,7 @@ import {
   Wrapper,
 } from './styled';
 import { HeartIcon, StartIcon, UploadIcon } from 'components';
-import { theme } from '../../styled';
+import { theme } from 'styled';
 
 interface DesktopType {
   data: any;
