@@ -16,7 +16,8 @@ export const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
-export const CopyRightWrapper = styled.div`
+export const CopyRightWrapper = styled.div<{ maxWidth: string }>`
+  max-width: ${p => p.maxWidth};
   width: 100%;
   border-top: 1px solid ${p => p.theme.colors.border.main};
   display: flex;
@@ -30,13 +31,15 @@ export const Title = styled.h2`
   font-size: ${p => p.theme.font.weight.normal};
 `;
 
-export const ContentTopWrapper = styled.div`
+export const ContentTopWrapper = styled.div<{ maxWidth: string }>`
   width: 100%;
   padding: 48px 0px;
+  max-width: ${p => p.maxWidth};
 `;
 
-export const ContentBottomWrapper = styled.div`
+export const ContentBottomWrapper = styled.div<{ maxWidth: string }>`
   width: 100%;
+  max-width: ${p => p.maxWidth};
 `;
 
 export const TitleWrapper = styled.div`
