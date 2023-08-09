@@ -2,39 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/AirConditionerIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/BackYardIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/BalconyIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/BeachWayIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/BreakFastIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/DoorIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/HairDryerIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/MedalIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/MedalOutLineIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/PoolIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/RightDerectionIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/SmokeAlarmIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/TVIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/TranslateIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Icons/WifiIcon.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Order.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/RoomDetailInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/styled.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/slice/commentSlice.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/function.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/comment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/comment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/rootReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/rootReducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Icons/StartIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Icons/StarIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Icons/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Icons/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Order.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Desktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/styled.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/slice/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styled/theme/styled.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styled/theme/styled.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styled/theme/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/styled/theme/theme.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +67,7 @@
       <workItem from="1691454732867" duration="2414000" />
       <workItem from="1691457293517" duration="18231000" />
       <workItem from="1691546405704" duration="18725000" />
-      <workItem from="1691589349809" duration="1871000" />
+      <workItem from="1691589349809" duration="2658000" />
     </task>
     <servers />
   </component>
@@ -133,7 +104,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx</url>
-          <line>54</line>
+          <line>50</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>

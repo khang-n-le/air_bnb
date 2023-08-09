@@ -38,10 +38,6 @@ const Comment = ({ id }: { id: string }) => {
     }
   }, [id]);
 
-  React.useEffect(() => {
-    console.log('data1', data);
-  }, [data]);
-
   return (
     <CommentWrapper>
       <TotalComment>{data.length} đánh giá</TotalComment>

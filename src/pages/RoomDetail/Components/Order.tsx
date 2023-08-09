@@ -7,10 +7,9 @@ import {
   RatingNumber,
   RatingWrapper,
 } from './styled';
-import { StarIcon } from '../../../components';
+import { StarIcon } from 'components';
 
 const Order = ({ data }: { data: any }) => {
-  console.log('data1', data);
   return (
     <OrderWrapper>
       <PriceAndRatingWrapper>

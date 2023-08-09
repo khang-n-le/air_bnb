@@ -34,10 +34,6 @@ interface DesktopType {
 }
 
 const Desktop = ({ data }: DesktopType) => {
-  React.useEffect(() => {
-    console.log('data1', data);
-  }, []);
-
   return (
     <Wrapper>
       <Title>{data.tenPhong}</Title>
