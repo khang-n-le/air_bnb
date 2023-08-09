@@ -154,7 +154,7 @@ declare module 'styled-components' {
     };
 
     /**
-     * z-index.tsx
+     * z-index.ts
      */
     zIndex: {
       xs: number;

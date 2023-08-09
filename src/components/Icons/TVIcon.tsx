@@ -3,7 +3,7 @@ import * as React from 'react';
 import { theme } from 'styled';
 import { IconProps } from './Icons';
 
-export const StartIcon = ({
+export const TVIcon = ({
   width,
   height,
   className,
@@ -14,19 +14,16 @@ export const StartIcon = ({
 
   return (
     <svg
+      fill={color || DEFAULT_COLOR}
+      width={width || DEFAULT_WIDTH}
+      height={height || DEFAULT_COLOR}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
       aria-hidden="true"
       role="presentation"
       focusable="false"
-      fill={color || DEFAULT_COLOR}
-      width={width || DEFAULT_WIDTH}
-      height={height || DEFAULT_COLOR}
     >
-      <path
-        fill-rule="evenodd"
-        d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"
-      ></path>
+      <path d="M9 29v-2h2v-2H6a5 5 0 0 1-5-4.78V8a5 5 0 0 1 4.78-5H26a5 5 0 0 1 5 4.78V20a5 5 0 0 1-4.78 5H21v2h2v2zm10-4h-6v2h6zm7-20H6a3 3 0 0 0-3 2.82V20a3 3 0 0 0 2.82 3H26a3 3 0 0 0 3-2.82V8a3 3 0 0 0-2.82-3z"></path>
     </svg>
   );
 };
