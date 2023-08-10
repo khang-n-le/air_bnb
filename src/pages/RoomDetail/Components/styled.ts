@@ -1,6 +1,6 @@
-import { Button, Col, Row } from 'antd';
+import { Button, Col, DatePicker, Row } from 'antd';
 import styled, { keyframes } from 'styled-components';
-
+const { RangePicker } = DatePicker;
 export const Wrapper = styled.div``;
 
 export const RoomDetailWrapper = styled.div`
@@ -223,4 +223,111 @@ export const RatingNumber = styled.p`
 export const PriceAndRatingWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
+`;
+
+export const CRangePicker = styled(RangePicker)`
+  height: 56px;
+  width: 100%;
+  align-items: end;
+  padding: 0px;
+
+  .ant-picker-input {
+    height: 100%;
+    position: relative;
+    padding: 26px 12px 10px !important;
+  }
+
+  .ant-picker-input:first-child {
+    border-right: 1px solid #f1f1f1;
+  }
+
+  .ant-picker-input:first-child:before {
+    position: absolute;
+    content: 'NHẬN PHÒNG';
+    top: 10px;
+    line-height: 12px;
+    font-weight: 800;
+    font-size: ${p => p.theme.font.size.xxs};
+  }
+
+  .ant-picker-input:nth-child(3):before {
+    position: absolute;
+    content: 'TRẢ PHÒNG';
+    top: 10px;
+    line-height: 12px;
+    font-weight: 800;
+    font-size: ${p => p.theme.font.size.xxs};
+  }
+`;
+
+export const RangePickerWrapper = styled.div`
+  display: flex;
+
+  .ant-picker-range-separator,
+  .ant-picker-suffix,
+  .ant-picker-suffix {
+    display: none;
+  }
+`;
+
+export const CustomDateWrapper = styled.div``;
+
+export const CustomDateTitle = styled.h2`
+  line-height: 26px;
+  font-weight: ${p => p.theme.font.weight.bold};
+  font-size: ${p => p.theme.font.size.lg};
+`;
+
+export const CustomDateDescription = styled.p`
+  height: 36px;
+  line-height: 18px;
+  padding-top: 8px;
+  font-weight: ${p => p.theme.font.weight.normal};
+  font-size: ${p => p.theme.font.size.xs};
+`;
+
+export const FooterWrapper = styled.div`
+  display: flex;
+  margin-top: 26px;
+  justify-content: space-between;
+`;
+
+export const FooterLeft = styled.div`
+  display: flex;
+`;
+
+export const FooterRight = styled.div`
+  display: flex;
+  line-height: 18px;
+  font-weight: ${p => p.theme.font.weight.bold};
+  font-size: ${p => p.theme.font.size.xs};
+  align-items: center;
+
+  button {
+    margin-left: 16px;
+    line-height: 18px;
+    font-weight: ${p => p.theme.font.weight.bold};
+    font-size: ${p => p.theme.font.size.xs};
+  }
+`;
+
+export const CalendarWrapper = styled.div`
+  padding: 26px 34px;
+
+  .ant-picker-cell-inner {
+    //color: white;
+  }
+
+  .ant-picker-cell-inner:before {
+    //background-color: black !important;
+    z-index: 0;
+  }
+
+  .ant-picker-cell-inner:has(:before) {
+  }
+
+  .ant-picker-cell-range-end > .ant-picker-cell-inner {
+    background-color: black;
+  }
 `;
