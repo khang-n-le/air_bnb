@@ -1,10 +1,10 @@
-import { Card } from "antd";
+import { Button, Card } from "antd";
 import { styled } from "styled-components";
 
 export const CardItem = styled(Card)`
     margin-bottom: 48px;
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-card .ant-card-cover img, :where(.css-dev-only-do-not-override-19gw05y).ant-card .ant-card-cover img+.ant-image-mask {
+    &.ant-card .ant-card-cover img, &.ant-card .ant-card-cover img+.ant-image-mask {
         border-radius: ${p => p.theme.radius.lg};
         position: absolute;
         width: 100%;
@@ -69,4 +69,34 @@ export const CardPriceBox = styled.p`
 
 export const CardPrice = styled.span`
     font-weight: ${p => p.theme.font.weight.extraBold};
+`
+
+export const RateWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 6px;
+`
+
+export const CardTitleWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+export const AddToFavButton = styled(Button)`
+    width: 32px !important;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    &.ant-btn:not(:disabled):focus-visible{
+        outline: none;
+        outline-offset: 0;
+        transition: none;
+    }
 `
