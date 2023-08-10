@@ -3,10 +3,7 @@ import { Button } from 'antd';
 
 export const Wrapper = styled.div`
   width: 100%;
-  
-  .button-brown {
-    background-color: brown;
-  }
+  margin-top: 80px;
 `;
 
 export const ButtonWrapper = styled.div`
