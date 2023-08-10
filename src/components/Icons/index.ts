@@ -21,3 +21,4 @@ export { BackYardIcon } from './BackYardIcon';
 export { HairDryerIcon } from './HairDryerIcon';
 export { BreakFastIcon } from './BreakFastIcon';
 export { SmokeAlarmIcon } from './SmokeAlarmIcon';
+export { KeyBoardIcon } from './KeyBoardIcon';
