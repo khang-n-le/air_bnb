@@ -101,9 +101,14 @@ const ContentWrapper = styled.div<{ isHomePage?: boolean }>`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 0px 80px;
+  /* padding: 0px 80px; */
 
   @media only screen and (max-width: 1440px) {
-    padding: 0px 40px;
+    /* padding: 0px 40px; */
   }
+`;
+
+const Content = styled.div<{ maxWidth: string }>`
+  max-width: ${p => p.maxWidth};
+  width: 100%;
 `;

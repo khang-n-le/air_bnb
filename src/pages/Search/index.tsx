@@ -1,24 +1,20 @@
-import { ButtonWrapper, CButton, Wrapper } from '../Home/styled';
-import { LogoBrandIcon } from 'components';
+import { useAppSelector } from 'app/hooks';
 import React from 'react';
+import { DEVICES } from 'utils';
+import Desktop from './Desktop';
+import Mobile from './Mobile';
+import { selectAppDevice } from 'slice';
 
 const Search = () => {
-  return (
-    <>
-      {' '}
-      <Wrapper>
-        <LogoBrandIcon
-          height={40}
-          width={40}
-          color={'#8c8c8c'}
-        ></LogoBrandIcon>
-        hello
-        <ButtonWrapper>
-          <CButton type="primary">Primary Button</CButton>
-        </ButtonWrapper>
-      </Wrapper>
-    </>
-  );
+  const appDevice = useAppSelector(selectAppDevice);
+
+  const RenderElement = {
+    [DEVICES.DESKTOP]: <Desktop></Desktop>,
+    [DEVICES.TABLET]: <Mobile></Mobile>,
+    [DEVICES.MOBILE]: <Desktop></Desktop>,
+  };
+
+  return RenderElement[appDevice.device];
 };
 
 export default Search;

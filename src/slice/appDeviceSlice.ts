@@ -22,20 +22,26 @@ interface AppDeviceState {
   device: DEVICES;
   isFirstLoad: boolean;
   maxWidth: string;
+  paddingLeft: string;
+  paddingRight: string;
 }
 
 const initialState: AppDeviceState = {
   device: DEVICES.DESKTOP,
   isFirstLoad: true,
   maxWidth: '1120px',
+  paddingLeft: '80px',
+  paddingRight: '80px',
 };
 
 const appDeviceSlice = createSlice({
   name: 'appDevice',
   initialState,
   reducers: {
-    handleChangeMaxWidth: (state, action) => {
+    handleChangeWidth: (state, action) => {
       state.maxWidth = action.payload.maxWidth;
+      state.paddingLeft = action.payload.paddingLeft;
+      state.paddingRight = action.payload.paddingRight;
     },
   },
   extraReducers: builder => {
@@ -48,7 +54,7 @@ const appDeviceSlice = createSlice({
 
 const { actions, reducer: appDeviceReducer } = appDeviceSlice;
 
-export const { handleChangeMaxWidth } = actions;
+export const { handleChangeWidth } = actions;
 
 export default appDeviceReducer;
 
