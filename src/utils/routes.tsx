@@ -6,7 +6,7 @@ const publicRoutes = [
     component: Home,
   },
   {
-    path: '/search',
+    path: '/search/:id',
     component: Search,
   },
   {

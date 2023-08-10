@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Header = styled.header<Props>`
-    position: relative;
+    position: fixed;
     height: 80px;
     width: 100%;
     z-index: 100;
@@ -29,7 +29,15 @@ export const Header = styled.header<Props>`
     }
 `
 
-export const Container = styled.div`
+export const Container = styled.div<{ maxWidth: string, paddingLeft: string, paddingRight: string }>`
+  width: 100%;
+  max-width: ${p => p.maxWidth};
+  padding-left: ${p => p.paddingLeft};
+  padding-right: ${p => p.paddingRight};
+  margin: 0 auto;
+`
+
+export const HeaderContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,8 +45,6 @@ export const Container = styled.div`
     position: relative;
     width: 100%;
     z-index: 1;
-    margin: 0 auto;
-    padding: 0 80px;
 `
 
 export const LogoWrapper = styled.div`
@@ -454,6 +460,9 @@ export const SearchInputButtonBox = styled.div`
 `
 
 export const SearchInputIconButton = styled(Button)`
+display: flex;
+justify-content: center;
+align-items: center;
     width: 48px !important;
     height: 48px !important;
     color: ${p => p.theme.colors.white};

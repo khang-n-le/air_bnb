@@ -3,7 +3,7 @@ import { CarouselMultipleItems, CategoryItem } from 'components';
 import { CarouselData } from './data';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { handleChangeMaxWidth, selectAppDevice } from 'slice';
+import { handleChangeWidth, selectAppDevice } from 'slice';
 
 const Desktop = () => {
   const dispatch = useAppDispatch();
@@ -11,8 +11,10 @@ const Desktop = () => {
 
   React.useEffect(() => {
     dispatch(
-      handleChangeMaxWidth({
-        maxWidth: '1111px',
+      handleChangeWidth({
+        maxWidth: '2360px',
+        paddingLeft: '80px',
+        paddingRight: '80px'
       })
     );
   }, []);
