@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 
 export const CardItem = styled(Card)`
     margin-bottom: 48px;
+    position: relative;
 
     &.ant-card .ant-card-cover img, &.ant-card .ant-card-cover img+.ant-image-mask {
         border-radius: ${p => p.theme.radius.lg};
@@ -28,6 +29,14 @@ export const CardItem = styled(Card)`
         position: relative;
         overflow: hidden;
     }
+`
+
+export const CardNavigation = styled.a`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 `
 
 export const CardTitle = styled.p`

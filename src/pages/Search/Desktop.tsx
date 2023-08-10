@@ -3,14 +3,14 @@ import { CCol, CRow, SearchContainer, SearchContent, SearchContentWrapper, Searc
 import { handleChangeWidth, selectAppDevice } from 'slice';
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { getRoomsByLocationThunk, rooms } from 'slice/roomSilce';
+import { getRoomsByLocationThunk, selectRoom } from 'slice/roomSilce';
 import { HomeItem } from 'components';
 
 const Desktop = () => {
     const appDevice = useAppSelector(selectAppDevice)
     const dispatch = useAppDispatch()
     const { id } = useParams()
-    const selectedRooms = useAppSelector(rooms)
+    const selectedRooms = useAppSelector(selectRoom)
 
     React.useEffect(() => {
         dispatch(
@@ -34,6 +34,7 @@ const Desktop = () => {
         return (
             <CCol span={8} key={room.id}>
                 <HomeItem
+                    roomId={room.id}
                     roomName={room.tenPhong}
                     bedAmount={room.giuong}
                     roomImage={room.hinhAnh}
