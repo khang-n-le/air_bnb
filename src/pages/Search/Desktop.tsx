@@ -2,9 +2,9 @@ import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { CCol, CRow, SearchContainer, SearchContent, SearchContentWrapper, SearchHomeList, SearchMap, SearchMapContent, SearchMapWrapper, SearchQuantity, SearchQuantityBox, SearchSection } from './styled';
 import { handleChangeWidth, selectAppDevice } from 'slice';
 import React from 'react';
-import HomeItem from 'components/Items/HomeItem';
 import { useParams } from 'react-router-dom';
 import { getRoomsByLocationThunk, rooms } from 'slice/roomSilce';
+import { HomeItem } from 'components';
 
 const Desktop = () => {
     const appDevice = useAppSelector(selectAppDevice)
