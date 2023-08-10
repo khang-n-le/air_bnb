@@ -4,7 +4,7 @@ import { handleChangeWidth, selectAppDevice } from 'slice';
 import React from 'react';
 import HomeItem from 'components/Items/HomeItem';
 import { useParams } from 'react-router-dom';
-import { getRoomsByLocationThunk, rooms } from 'slice/roomSlice';
+import { getRoomsByLocationThunk, rooms } from 'slice/roomSilce';
 
 const Desktop = () => {
     const appDevice = useAppSelector(selectAppDevice)

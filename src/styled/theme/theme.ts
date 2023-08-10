@@ -24,7 +24,7 @@ const theme: DefaultTheme = {
       xs: '14px',
       sm: '16px',
       md: '18px',
-      lg: '24px',
+      lg: '22px',
       xl: '34px',
     },
   },
@@ -158,7 +158,7 @@ const theme: DefaultTheme = {
     md: '6px',
     lg: '12px',
     xl: '32px',
-    xxl: '40px'
+    xxl: '40px',
   },
 
   /**
