@@ -1,22 +1,22 @@
 import styled from 'styled-components';
-import { Button } from 'antd';
+import { Button, Col, Row } from 'antd';
 
 export const Wrapper = styled.div`
   width: 100%;
-  
-  .button-brown {
-    background-color: brown;
-  }
+  margin-top: 80px;
 `;
 
-export const ButtonWrapper = styled.div`
-  background-color: brown;
-`;
+export const RoomsSection = styled.section`
+  margin: 3rem 0 0;
+`
 
-export const CButton = styled(Button)`
-  width: 200px;
+export const Container = styled.div<{ paddingLeft: string, paddingRight: string }>`
+  padding-left: ${p => p.paddingLeft};
+  padding-right: ${p => p.paddingRight};
+`
 
-  &:hover {
-    background-color: red !important;
-  }
-`;
+export const RoomsContent = styled.div``
+
+export const CRow = styled(Row)``
+
+export const CCol = styled(Col)``

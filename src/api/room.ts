@@ -12,6 +12,7 @@ export const roomApi = {
 
       return response;
     } catch (error) {
+
       throw error;
     }
   },
@@ -25,6 +26,19 @@ export const roomApi = {
 
       return response
     } catch (error) {
+      throw error
+    }
+  },
+  getAllRooms: async () => {
+    let url = pathname;
+
+    try {
+      const response = await airBnbService.get(url);
+
+      return response
+    }
+    catch (error) {
+
       throw error
     }
   }

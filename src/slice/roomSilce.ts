@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
 import { roomApi } from 'api';
 import { GetOneRoomType, GetRooms } from 'api/room';
+import { FindOneOptions } from 'api/common';
 
 export const getOneRoom = createAsyncThunk(
   'room/getOneRoom',
@@ -39,14 +40,34 @@ export const getRoomsByLocationThunk = createAsyncThunk(
   }
 )
 
+export const getAllRoomsThunk = createAsyncThunk(
+  'room/getAllRoomsThunk',
+  async (option: FindOneOptions, { rejectWithValue }) => {
+    try {
+      const response = await roomApi.getAllRooms()
+
+      return response
+    }
+    catch (error: any) {
+      if (!error.response) {
+        throw error;
+      }
+      console.log(error)
+      return rejectWithValue(error.response.data);
+    }
+  }
+)
+
 interface InitialState {
   currentRoom: any;
-  rooms: any[]
+  rooms: any[];
+  allRooms: any[];
 }
 
 const initState: InitialState = {
   currentRoom: {},
   rooms: [],
+  allRooms: [],
 };
 
 const roomSlice = createSlice({
@@ -56,6 +77,10 @@ const roomSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(getRoomsByLocationThunk.fulfilled, (state, action) => {
       state.rooms = (action.payload as any).content
+    })
+
+    builder.addCase(getAllRoomsThunk.fulfilled, (state, action) => {
+      state.allRooms = (action.payload as any).content
     })
   },
 });
@@ -68,5 +93,3 @@ export default roomReducer;
 export const selectRoom = (state: RootState): InitialState =>
   state.room as InitialState;
 
-export const rooms = (state: RootState): InitialState =>
-  state.room as InitialState;
