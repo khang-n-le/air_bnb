@@ -1,22 +1,20 @@
-import type { MenuProps } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { LogoBrandIcon } from 'components/Icons/LogoBrandIcon';
-import { ButtonDivider, Container, Header, HeaderContent, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
-import { GlobeIcon } from 'components/Icons';
-import { Bars } from 'components/Icons/Bars';
-import { ProfileUser } from 'components/Icons/ProfileUser';
 import React from 'react';
+import type { MenuProps } from 'antd';
+import { SearchOutlined, UserOutlined } from '@ant-design/icons';
+import { ButtonDivider, Container, Header, HeaderContent, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
+import { Bars, GlobeIcon, LogoBrandIcon } from 'components/Icons';
 import { useAppSelector } from 'app/hooks';
-import { selectAppDevice } from 'slice';
+import { selectAccount, selectAppDevice } from 'slice';
+import Avatar from 'components/Avatar';
 
-const items: MenuProps['items'] = [
+const loggedOutItems: MenuProps['items'] = [
   {
     key: '1',
-    label: <a href="/">Đăng ký</a>,
+    label: 'Đăng ký',
   },
   {
     key: '2',
-    label: <a href="/">Đăng nhập</a>,
+    label: 'Đăng nhập',
   },
   {
     type: 'divider',
@@ -31,11 +29,54 @@ const items: MenuProps['items'] = [
   },
 ];
 
-const Desktop = ({ locationList }: { locationList: any[] }) => {
+const loggedInItems: MenuProps['items'] = [
+  {
+    key: '1',
+    label: 'Tin nhắn',
+  },
+  {
+    key: '2',
+    label: 'Thông báo',
+  },
+  {
+    key: '3',
+    label: 'Chuyến đi',
+  },
+  {
+    key: '4',
+    label: 'Danh sách yêu thích',
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: '5',
+    label: <a href="/">Cho thuê chỗ ở qua AirBnb</a>,
+  },
+  {
+    key: '6',
+    label: 'Tài khoản',
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: '7',
+    label: <a href="/">Trung tâm trợ giúp</a>,
+  },
+  {
+    key: '8',
+    label: 'Đăng xuất',
+  },
+]
+
+
+const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowModal: (key: string) => void }) => {
   const [isSearchBarOpen, setIsSearchBarOpen] = React.useState(false);
   const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
   const [selectedLocationId, setSelecedLocationId] = React.useState()
   const appDevice = useAppSelector(selectAppDevice);
+  const { account, error, isAuthenticated } = useAppSelector(selectAccount);
 
   React.useEffect(() => {
     if (locationList.length > 0) {
@@ -70,6 +111,19 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
   const changeLocationHandler = (value: any) => {
     setSelecedLocationId(value)
   }
+
+  const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
+    onShowModal(key)
+  };
+
+  const profileMenuLoggedIn = {
+    items: loggedInItems,
+  };
+
+  const profileMenuLoggedOut = {
+    items: loggedOutItems,
+    onClick: handleMenuClick
+  };
 
   return (
     <>
@@ -229,7 +283,7 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
                   icon={<GlobeIcon width={16} height={16} color="initial" />}
                 ></LanguageIconButton>
                 <ProfileDropdown
-                  menu={{ items }}
+                  menu={isAuthenticated ? profileMenuLoggedIn : profileMenuLoggedOut}
                   placement="bottomRight"
                   trigger={['click']}
                 >
@@ -240,11 +294,10 @@ const Desktop = ({ locationList }: { locationList: any[] }) => {
                       styles={{ display: 'block' }}
                       color="initial"
                     />
-                    <ProfileUser
-                      width={32}
-                      height={32}
-                      styles={{ display: 'block' }}
-                    />
+                    {isAuthenticated
+                      ? <Avatar size={32} backgroundColor='#000'>{account?.name[0].toUpperCase()}</Avatar>
+                      : <Avatar size={32} backgroundColor='#9e9e9e' icon={<UserOutlined style={{ fontSize: '18px' }} />}></Avatar>}
+
                   </ProfileButton>
                 </ProfileDropdown>
               </NavBarContent>

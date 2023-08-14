@@ -7,11 +7,34 @@ import { Footer, Header } from './components';
 import { publicRoutes } from './utils/routes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { findAllLocation } from './slice';
+import { findAllLocation, loggedInAccount, setError } from './slice';
+import Modal from 'components/Modal';
+import { getLocalStorage } from 'utils';
 
 export const Router = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [pathName, setPathName] = React.useState<string>('');
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [authTitle, setAuthTitle] = React.useState<string>('');
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    dispatch(setError(''))
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  }
+
+
+  const showModal = (key: string) => {
+    if (key == '1') {
+      setAuthTitle('Đăng ký')
+    } else if (key == '2') {
+      setAuthTitle('Đăng nhập')
+    }
+    setIsModalOpen(true);
+  };
 
   const appDevice = useAppSelector(selectAppDevice);
 
@@ -50,12 +73,21 @@ export const Router = (): JSX.Element => {
     setPathName(window.location.pathname);
   }, [window.location.pathname]);
 
+  React.useEffect(() => {
+    const storedAccount = getLocalStorage('account');
+
+    if (storedAccount) {
+      dispatch(loggedInAccount(storedAccount))
+    }
+  }, [])
+
   return (
     <Wrapper>
-      <Header></Header>
       <ContentWrapper isHomePage={pathName == '/'}>
         <Content maxWidth={appDevice.maxWidth}>
           <BrowserRouter>
+            <Modal open={isModalOpen} onCancel={handleCancel} title={authTitle} onOk={handleOk}></Modal>
+            <Header onShowModal={showModal}></Header>
             <GlobalStyle></GlobalStyle>
 
             <Routes>
@@ -81,7 +113,8 @@ export const Router = (): JSX.Element => {
           </BrowserRouter>
         </Content>
       </ContentWrapper>
-      {pathName != '/' && <Footer></Footer>}
+      <Footer></Footer>
+      {/* {pathName != '/' && <Footer></Footer>} */}
     </Wrapper>
   );
 };
@@ -112,3 +145,6 @@ const Content = styled.div<{ maxWidth: string }>`
   max-width: ${p => p.maxWidth};
   width: 100%;
 `;
+
+
+

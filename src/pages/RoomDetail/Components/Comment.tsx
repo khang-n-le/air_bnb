@@ -29,7 +29,7 @@ const Comment = ({ id }: { id: string }) => {
         const result = await dispatch(findCommentByRoomId(id)).unwrap();
         setData((result as any).content);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     };
 
