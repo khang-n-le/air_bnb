@@ -3,8 +3,8 @@ import type { MenuProps } from 'antd';
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
 import { ButtonDivider, Container, Header, HeaderContent, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
 import { Bars, GlobeIcon, LogoBrandIcon } from 'components/Icons';
-import { useAppSelector } from 'app/hooks';
-import { selectAccount, selectAppDevice } from 'slice';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { selectAccount, selectAppDevice, setLogOut } from 'slice';
 import Avatar from 'components/Avatar';
 
 const loggedOutItems: MenuProps['items'] = [
@@ -76,6 +76,7 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
   const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
   const [selectedLocationId, setSelecedLocationId] = React.useState()
   const appDevice = useAppSelector(selectAppDevice);
+  const dispatch = useAppDispatch()
   const { account, error, isAuthenticated } = useAppSelector(selectAccount);
 
   React.useEffect(() => {
@@ -116,8 +117,15 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
     onShowModal(key)
   };
 
+  const handleProfileMenuClick: MenuProps['onClick'] = ({ key }) => {
+    if (key === '8') {
+      dispatch(setLogOut({}))
+    }
+  };
+
   const profileMenuLoggedIn = {
     items: loggedInItems,
+    onClick: handleProfileMenuClick
   };
 
   const profileMenuLoggedOut = {

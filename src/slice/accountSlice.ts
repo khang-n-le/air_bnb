@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PostAccount, authApi } from 'api/auth';
 import { RootState } from 'app/store';
 import { useNavigate } from 'react-router-dom';
-import { setLocalStorage } from 'utils/localStorage';
+import { removeLocalStorage, setLocalStorage } from 'utils/localStorage';
 
 export const login = createAsyncThunk(
   'account/login',
@@ -71,6 +71,11 @@ const accountSlice = createSlice({
     },
     setError: (state, action) => {
       state.error = action.payload
+    },
+    setLogOut: (state, action) => {
+      removeLocalStorage('account')
+      state.account = null
+      state.isAuthenticated = false
     }
   },
   extraReducers: builder => {
@@ -107,7 +112,7 @@ const accountSlice = createSlice({
 
 const { actions, reducer: accountReducer } = accountSlice;
 
-export const { loggedInAccount, setError } = actions;
+export const { loggedInAccount, setError, setLogOut } = actions;
 
 export default accountReducer;
 

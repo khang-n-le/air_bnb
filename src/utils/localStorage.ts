@@ -17,3 +17,11 @@ export const getLocalStorage = (key: string): any | null => {
         return null
     }
 }
+
+export const removeLocalStorage = (key: string) => {
+    try {
+        localStorage.removeItem(key)
+    } catch (error) {
+        console.error('Error retrieving from Local Storage:', error);
+    }
+}

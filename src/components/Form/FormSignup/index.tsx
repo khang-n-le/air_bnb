@@ -66,7 +66,7 @@ const FormSignup = (props: Props) => {
             onFinish={submitHandler}
             requiredMark={false}
             initialValues={{ prefix: '84' }}
-            scrollToFirstError
+            scrollToFirstError={true}
         >
             {error &&
                 <AlertBox>
