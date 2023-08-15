@@ -10,6 +10,7 @@ type Props = {
     roomImage: string,
     roomDescription: string,
     roomPrice: string,
+    numberOfComments: string,
 }
 
 const HomeItem = (props: Props) => {
@@ -31,7 +32,7 @@ const HomeItem = (props: Props) => {
                 <RateWrapper>
                     <StarIcon color={theme.colors.black} width={14} height={14} />
                     4.8
-                    <span>(210)</span>
+                    <span>{props.numberOfComments}</span>
                 </RateWrapper>
             </CardTitleWrapper>
             <CardDescription>{props.roomDescription}</CardDescription>

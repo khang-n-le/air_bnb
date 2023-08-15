@@ -6,12 +6,16 @@ import { useAppSelector } from 'app/hooks';
 import { selectAppDevice } from 'slice/appDeviceSlice';
 import { selectLocation } from 'slice';
 
-const Header = () => {
+type Props = {
+  onShowModal: (key: string) => void
+}
+
+const Header = (props: Props) => {
   const appDevice = useAppSelector(selectAppDevice);
   const location = useAppSelector(selectLocation);
 
   const renderElement = {
-    [DEVICES.DESKTOP]: <Desktop locationList={location.list} />,
+    [DEVICES.DESKTOP]: <Desktop locationList={location.list} onShowModal={props.onShowModal} />,
     [DEVICES.MOBILE]: <Mobile />,
     [DEVICES.TABLET]: <Mobile />,
   };

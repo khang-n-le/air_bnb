@@ -52,11 +52,11 @@ export const getAllRoomsThunk = createAsyncThunk(
       if (!error.response) {
         throw error;
       }
-      console.log(error)
       return rejectWithValue(error.response.data);
     }
   }
 )
+
 
 interface InitialState {
   currentRoom: any;

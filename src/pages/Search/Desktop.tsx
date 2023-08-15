@@ -34,6 +34,7 @@ const Desktop = () => {
         return (
             <CCol span={8} key={room.id}>
                 <HomeItem
+                    numberOfComments='210'
                     roomId={room.id}
                     roomName={room.tenPhong}
                     bedAmount={room.giuong}
