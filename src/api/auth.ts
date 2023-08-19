@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { airBnbService } from './services/index';
+import { Stringifier } from 'styled-components/dist/types';
 
 const pathname = '/auth'
 
@@ -16,7 +17,7 @@ export const authApi = {
         }
     },
 
-    signUp: async (account: Account) => {
+    signUp: async (account: Account['user']) => {
         let url = `${pathname}/signup`
 
         try {
@@ -35,13 +36,15 @@ export interface PostAccount {
 }
 
 export interface Account {
-    id: number,
-    avatar: string,
-    password: string,
-    role: string,
-    name: string,
-    email: string,
-    phone: string,
-    birthday: string,
-    gender: boolean
+    user: {
+        id?: string,
+        avatar?: string,
+        name?: string,
+        email?: string,
+        password?: string,
+        phone?: string,
+        birthday?: string,
+        gender?: boolean,
+    },
+    token?: string
 }

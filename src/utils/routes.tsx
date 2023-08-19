@@ -1,3 +1,4 @@
+import UserProfile from 'pages/UserProfile';
 import { Home, Search, RoomDetail } from '../pages';
 
 const publicRoutes = [
@@ -19,6 +20,11 @@ const publicRoutes = [
     component: RoomDetail,
     layout: '',
   },
+  {
+    path: '/users/:id',
+    component: UserProfile,
+    layout: '',
+  }
 ];
 
 const privateRoutes = [{}];

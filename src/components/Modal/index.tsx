@@ -2,6 +2,8 @@ import React from 'react'
 import { CustomModal, Title } from './styled'
 import { FormLogin } from 'components/Form'
 import FormSignup from 'components/Form/FormSignup'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { selectAccount, setIsLogInForm } from 'slice'
 
 
 type Props = {
@@ -12,18 +14,19 @@ type Props = {
 }
 
 const Modal = (props: Props) => {
-    const [isLogIn, setIsLogIn] = React.useState<boolean>()
+    const { isLogInForm } = useAppSelector(selectAccount)
+    const dispatch = useAppDispatch()
 
     React.useEffect(() => {
         if (props.title === 'Đăng nhập') {
-            setIsLogIn(true)
+            dispatch(setIsLogInForm(true))
         } else {
-            setIsLogIn(false)
+            dispatch(setIsLogInForm(false))
         }
     }, [props.title])
 
     const changeFormHanđler = () => {
-        setIsLogIn(!isLogIn)
+        dispatch(setIsLogInForm(!isLogInForm))
     }
 
     return (
@@ -38,7 +41,7 @@ const Modal = (props: Props) => {
 
         >
             <Title>Chào mừng bạn đến với Airbnb</Title>
-            {isLogIn ? <FormLogin onOk={props.onOk} onChangeForm={changeFormHanđler}></FormLogin> : <FormSignup onOk={props.onOk} onChangeForm={changeFormHanđler}></FormSignup>}
+            {isLogInForm ? <FormLogin onOk={props.onOk} onChangeForm={changeFormHanđler}></FormLogin> : <FormSignup onOk={props.onOk} onChangeForm={changeFormHanđler}></FormSignup>}
         </CustomModal>
     )
 }

@@ -29,10 +29,7 @@ const FormSignup = (props: Props) => {
     }, [isAuthenticated])
 
     const submitHandler = (values: any) => {
-        const account: Account = {
-            id: 0,
-            avatar: '',
-            role: '',
+        const account: Account['user'] = {
             name: values.name,
             email: values.email,
             phone: values.phone,

@@ -63,7 +63,7 @@ const FormLogin = (props: Props) => {
                     },
                 ]}
             >
-                <CInput size="large" placeholder='name@company.com' />
+                <CInput size="large" placeholder='name@company.com' defaultValue={account?.user.email} />
             </Form.Item>
 
             <Form.Item
@@ -71,7 +71,7 @@ const FormLogin = (props: Props) => {
                 label="Mật khẩu"
                 rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
             >
-                <CInputPassword size="large" placeholder='••••••••' />
+                <CInputPassword size="large" placeholder='••••••••' defaultValue={account?.user.password} />
             </Form.Item>
 
             <Form.Item>
