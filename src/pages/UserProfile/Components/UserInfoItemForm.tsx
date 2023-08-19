@@ -16,9 +16,6 @@ type Props = {
     rules?: any
 }
 
-
-
-
 const UserInfoItemForm = (props: Props) => {
     return (
         <UserInfoForm

@@ -78,6 +78,7 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
       label: 'Đăng xuất',
     },
   ]
+
   React.useEffect(() => {
     if (locationList.length > 0) {
       const locationNameListArr = locationList.map(location => {
@@ -312,7 +313,6 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                     {!isAuthenticated &&
                       <Avatar size={32} backgroundColor='#9e9e9e' icon={<UserOutlined style={{ fontSize: '18px' }} />}></Avatar>
                     }
-
                   </ProfileButton>
                 </ProfileDropdown>
               </NavBarContent>
