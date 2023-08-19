@@ -6,7 +6,9 @@ type Props = {
     icon?: any,
     src?: any,
     children?: string,
-    backgroundColor?: string
+    backgroundColor?: string,
+    fontSize?: string,
+    fontWeight?: string
 }
 
 const Avatar = (props: Props) => {
@@ -15,7 +17,7 @@ const Avatar = (props: Props) => {
             size={props.size}
             icon={props.icon}
             src={props.src}
-            style={{ backgroundColor: props.backgroundColor }}>
+            style={{ backgroundColor: props.backgroundColor, fontSize: props.fontSize, fontWeight: props.fontWeight }}>
             {props.children}
         </CAvatar>
     )

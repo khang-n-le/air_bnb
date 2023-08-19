@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { PostAccount, authApi } from 'api/auth';
+import { Account, PostAccount, authApi } from 'api/auth';
 import { RootState } from 'app/store';
-import { useNavigate } from 'react-router-dom';
 import { removeLocalStorage, setLocalStorage } from 'utils/localStorage';
 
 export const login = createAsyncThunk(
@@ -23,7 +22,7 @@ export const login = createAsyncThunk(
 
 export const signUp = createAsyncThunk(
   'account/signUp',
-  async (account: Account, { rejectWithValue }) => {
+  async (account: Account['user'], { rejectWithValue }) => {
     try {
       const response = await authApi.signUp(account)
 
@@ -37,28 +36,18 @@ export const signUp = createAsyncThunk(
   }
 )
 
-interface Account {
-  id: number,
-  name: string,
-  email: string,
-  password: string,
-  phone: string,
-  birthday: string,
-  avatar: string,
-  gender: boolean,
-  role: string
-}
-
 interface InitialState {
   account: Account | null,
   error: string,
-  isAuthenticated: boolean
+  isAuthenticated: boolean,
+  isLogInForm: boolean | null
 }
 
 const initialState: InitialState = {
   account: null,
   error: '',
-  isAuthenticated: false
+  isAuthenticated: false,
+  isLogInForm: null,
 };
 
 const accountSlice = createSlice({
@@ -76,12 +65,15 @@ const accountSlice = createSlice({
       removeLocalStorage('account')
       state.account = null
       state.isAuthenticated = false
+    },
+    setIsLogInForm: (state, action) => {
+      state.isLogInForm = action.payload
     }
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action) => {
-      setLocalStorage('account', (action.payload as any).content.user)
-      state.account = (action.payload as any).content.user
+      setLocalStorage('account', (action.payload as any).content)
+      state.account = (action.payload as any).content
       state.isAuthenticated = true
     })
 
@@ -94,10 +86,12 @@ const accountSlice = createSlice({
     })
 
     builder.addCase(signUp.fulfilled, (state, action) => {
-      setLocalStorage('account', (action.payload as any).content)
-      state.account = (action.payload as any).content
-      state.isAuthenticated = true
-
+      const account = {
+        user: (action.payload as any).content
+      }
+      state.account = account
+      state.isLogInForm = true
+      state.error = ''
     })
 
     builder.addCase(signUp.rejected, (state, action) => {
@@ -112,7 +106,7 @@ const accountSlice = createSlice({
 
 const { actions, reducer: accountReducer } = accountSlice;
 
-export const { loggedInAccount, setError, setLogOut } = actions;
+export const { loggedInAccount, setError, setLogOut, setIsLogInForm } = actions;
 
 export default accountReducer;
 

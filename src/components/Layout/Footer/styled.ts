@@ -16,13 +16,15 @@ export const ContentWrapper = styled.div`
   justify-content: center;
 `;
 
-export const CopyRightWrapper = styled.div<{ maxWidth: string }>`
+export const CopyRightWrapper = styled.div<{ maxWidth: string, paddingLeft: string, paddingRight: string }>`
   max-width: ${p => p.maxWidth};
   width: 100%;
   border-top: 1px solid ${p => p.theme.colors.border.main};
   display: flex;
   justify-content: space-between;
   padding: 24px 0px;
+  padding-left: ${p => p.paddingLeft};
+  padding-right: ${p => p.paddingRight};
 `;
 
 export const Title = styled.h2`
@@ -31,15 +33,19 @@ export const Title = styled.h2`
   font-size: ${p => p.theme.font.weight.normal};
 `;
 
-export const ContentTopWrapper = styled.div<{ maxWidth: string }>`
+export const ContentTopWrapper = styled.div<{ maxWidth: string, paddingLeft: string, paddingRight: string }>`
   width: 100%;
   padding: 48px 0px;
   max-width: ${p => p.maxWidth};
+  padding-left: ${p => p.paddingLeft};
+  padding-right: ${p => p.paddingRight};
 `;
 
-export const ContentBottomWrapper = styled.div<{ maxWidth: string }>`
+export const ContentBottomWrapper = styled.div<{ maxWidth: string, paddingLeft: string, paddingRight: string }>`
   width: 100%;
   max-width: ${p => p.maxWidth};
+  padding-left: ${p => p.paddingLeft};
+  padding-right: ${p => p.paddingRight};
 `;
 
 export const TitleWrapper = styled.div`

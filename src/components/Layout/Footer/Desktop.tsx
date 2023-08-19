@@ -37,7 +37,7 @@ const Desktop = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        <ContentTopWrapper maxWidth={appDevice.maxWidth}>
+        <ContentTopWrapper maxWidth={appDevice.maxWidth} paddingLeft={appDevice.paddingLeft} paddingRight={appDevice.paddingRight}>
           <TitleWrapper>
             <Title>
               Khám phá các lựa chọn khác tại và xung quanh Williamstown North
@@ -55,7 +55,7 @@ const Desktop = () => {
         </ContentTopWrapper>
       </ContentWrapper>
       <ContentWrapper>
-        <ContentBottomWrapper maxWidth={appDevice.maxWidth}>
+        <ContentBottomWrapper maxWidth={appDevice.maxWidth} paddingLeft={appDevice.paddingLeft} paddingRight={appDevice.paddingRight}>
           <ServicesWrapper>
             {ServiceData.map((item, index) => {
               return (
@@ -72,7 +72,7 @@ const Desktop = () => {
           </ServicesWrapper>
         </ContentBottomWrapper>
       </ContentWrapper>
-      <CopyRightWrapper maxWidth={appDevice.maxWidth}>
+      <CopyRightWrapper maxWidth={appDevice.maxWidth} paddingLeft={appDevice.paddingLeft} paddingRight={appDevice.paddingRight}>
         <CopyRightLeft>
           <CopyRightLeftItem>© 2023 Airbnb, Inc.</CopyRightLeftItem>
           <CopyRightLeftItem>Quyền riêng tư</CopyRightLeftItem>

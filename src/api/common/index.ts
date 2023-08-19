@@ -18,6 +18,11 @@ export interface CountOptions {
   where?: any;
 }
 
+
+export interface GetUser {
+  id?: string;
+}
+
 export const serialize = (obj: any) => {
   const keys = Object.keys(obj);
   let query = '?';
