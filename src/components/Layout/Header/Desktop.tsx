@@ -29,48 +29,6 @@ const loggedOutItems: MenuProps['items'] = [
   },
 ];
 
-const loggedInItems: MenuProps['items'] = [
-  {
-    key: '1',
-    label: 'Tin nhắn',
-  },
-  {
-    key: '2',
-    label: 'Thông báo',
-  },
-  {
-    key: '3',
-    label: 'Chuyến đi',
-  },
-  {
-    key: '4',
-    label: 'Danh sách yêu thích',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    key: '5',
-    label: <a href="/">Cho thuê chỗ ở qua AirBnb</a>,
-  },
-  {
-    key: '6',
-    label: 'Tài khoản',
-  },
-  {
-    type: 'divider',
-  },
-  {
-    key: '7',
-    label: <a href="/">Trung tâm trợ giúp</a>,
-  },
-  {
-    key: '8',
-    label: 'Đăng xuất',
-  },
-]
-
-
 const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowModal: (key: string) => void }) => {
   const [isSearchBarOpen, setIsSearchBarOpen] = React.useState(false);
   const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
@@ -78,7 +36,48 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
   const appDevice = useAppSelector(selectAppDevice);
   const dispatch = useAppDispatch()
   const { account, error, isAuthenticated } = useAppSelector(selectAccount);
+  const id = account?.user.id;
 
+  const loggedInItems: MenuProps['items'] = [
+    {
+      key: '1',
+      label: 'Tin nhắn',
+    },
+    {
+      key: '2',
+      label: 'Thông báo',
+    },
+    {
+      key: '3',
+      label: 'Chuyến đi',
+    },
+    {
+      key: '4',
+      label: 'Danh sách yêu thích',
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '5',
+      label: <a href="/">Cho thuê chỗ ở qua AirBnb</a>,
+    },
+    {
+      key: '6',
+      label: <a href={`/users/${id}`}>Tài khoản</a>,
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: '7',
+      label: <a href="/">Trung tâm trợ giúp</a>,
+    },
+    {
+      key: '8',
+      label: 'Đăng xuất',
+    },
+  ]
   React.useEffect(() => {
     if (locationList.length > 0) {
       const locationNameListArr = locationList.map(location => {
@@ -302,9 +301,17 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                       styles={{ display: 'block' }}
                       color="initial"
                     />
-                    {isAuthenticated
-                      ? <Avatar size={32} backgroundColor='#000'>{account?.name[0].toUpperCase()}</Avatar>
-                      : <Avatar size={32} backgroundColor='#9e9e9e' icon={<UserOutlined style={{ fontSize: '18px' }} />}></Avatar>}
+                    {isAuthenticated && account?.user.avatar === '' &&
+                      <Avatar size={32} backgroundColor='#222'>{account?.user.name?.[0].toUpperCase()}</Avatar>
+                    }
+
+                    {isAuthenticated && account?.user.avatar !== '' &&
+                      <Avatar size={32} src={account?.user.avatar}></Avatar>
+                    }
+
+                    {!isAuthenticated &&
+                      <Avatar size={32} backgroundColor='#9e9e9e' icon={<UserOutlined style={{ fontSize: '18px' }} />}></Avatar>
+                    }
 
                   </ProfileButton>
                 </ProfileDropdown>

@@ -3,3 +3,4 @@ export * from './locationSlice';
 export * from './appDeviceSlice';
 export * from './commentSlice';
 export * from './roomSilce';
+export * from './userSlice'

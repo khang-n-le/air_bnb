@@ -142,7 +142,7 @@ const ContentWrapper = styled.div<{ isHomePage?: boolean }>`
 `;
 
 const Content = styled.div<{ maxWidth: string }>`
-  max-width: ${p => p.maxWidth};
+  /* max-width: ${p => p.maxWidth}; */
   width: 100%;
 `;
 

@@ -86,6 +86,12 @@ export const CSelect = styled(Select)`
     &.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
         border-color: ${p => p.theme.colors.black};
     }
+
+    &.ant-select-focused.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+        border-color: ${p => p.theme.colors.black};
+        box-shadow: none;
+        border-width: 2px;
+    }
 `
 
 export const SubmitButton = styled(Button)`
