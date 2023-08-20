@@ -3,14 +3,15 @@ import { PostAccount, authApi } from 'api/auth';
 import { Account } from 'api/common';
 import { RootState } from 'app/store';
 import { removeLocalStorage, setLocalStorage } from 'utils/localStorage';
+import { removeCurrentEntity, updateTokenBearer } from 'api/services/airBnb';
 
 export const login = createAsyncThunk(
   'account/login',
   async (account: PostAccount, { rejectWithValue }) => {
     try {
-      const response = await authApi.login(account)
+      const response = await authApi.login(account);
 
-      return response
+      return response;
     } catch (error: any) {
       if (!error.response) {
         throw error;
@@ -19,15 +20,15 @@ export const login = createAsyncThunk(
       return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 export const signUp = createAsyncThunk(
   'account/signUp',
   async (account: Account['user'], { rejectWithValue }) => {
     try {
-      const response = await authApi.signUp(account)
+      const response = await authApi.signUp(account);
 
-      return response
+      return response;
     } catch (error: any) {
       if (!error.response) {
         throw error;
@@ -35,13 +36,13 @@ export const signUp = createAsyncThunk(
       return rejectWithValue(error.response.data);
     }
   }
-)
+);
 
 interface InitialState {
-  account: Account | null,
-  error: string,
-  isAuthenticated: boolean,
-  isLogInForm: boolean | null
+  account: Account | null;
+  error: string;
+  isAuthenticated: boolean;
+  isLogInForm: boolean | null;
 }
 
 const initialState: InitialState = {
@@ -56,52 +57,55 @@ const accountSlice = createSlice({
   initialState,
   reducers: {
     loggedInAccount: (state, action) => {
-      state.account = action.payload
-      state.isAuthenticated = true
+      state.account = action.payload;
+      state.isAuthenticated = true;
     },
     setError: (state, action) => {
-      state.error = action.payload
+      state.error = action.payload;
     },
     setLogOut: (state, action) => {
-      removeLocalStorage('account')
-      state.account = null
-      state.isAuthenticated = false
+      removeLocalStorage('account');
+      state.account = null;
+      state.isAuthenticated = false;
     },
     setIsLogInForm: (state, action) => {
-      state.isLogInForm = action.payload
-    }
+      state.isLogInForm = action.payload;
+    },
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action) => {
-      setLocalStorage('account', (action.payload as any).content)
-      state.account = (action.payload as any).content
-      state.isAuthenticated = true
-    })
+      setLocalStorage('account', (action.payload as any).content);
+      updateTokenBearer((action.payload as any).content.token);
+
+      state.account = (action.payload as any).content;
+      state.isAuthenticated = true;
+    });
 
     builder.addCase(login.rejected, (state, action) => {
       if (action.payload) {
-        state.error = (action.payload as any).content
+        state.error = (action.payload as any).content;
+        removeCurrentEntity();
       } else {
-        state.error = 'Đã có lỗi xảy ra. Vui lòng thử lại!'
+        state.error = 'Đã có lỗi xảy ra. Vui lòng thử lại!';
       }
-    })
+    });
 
     builder.addCase(signUp.fulfilled, (state, action) => {
       const account = {
-        user: (action.payload as any).content
-      }
-      state.account = account
-      state.isLogInForm = true
-      state.error = ''
-    })
+        user: (action.payload as any).content,
+      };
+      state.account = account;
+      state.isLogInForm = true;
+      state.error = '';
+    });
 
     builder.addCase(signUp.rejected, (state, action) => {
       if (action.payload) {
-        state.error = (action.payload as any).content
+        state.error = (action.payload as any).content;
       } else {
-        state.error = 'Đã có lỗi xảy ra. Vui lòng thử lại!'
+        state.error = 'Đã có lỗi xảy ra. Vui lòng thử lại!';
       }
-    })
+    });
   },
 });
 
@@ -111,4 +115,5 @@ export const { loggedInAccount, setError, setLogOut, setIsLogInForm } = actions;
 
 export default accountReducer;
 
-export const selectAccount = (state: RootState): InitialState => state.account as InitialState
+export const selectAccount = (state: RootState): InitialState =>
+  state.account as InitialState;

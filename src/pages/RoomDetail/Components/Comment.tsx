@@ -40,7 +40,7 @@ const Comment = ({ id }: { id: string }) => {
 
   return (
     <CommentWrapper>
-      <TotalComment>{data.length} đánh giá</TotalComment>
+      <TotalComment>{data?.length} đánh giá</TotalComment>
       <TotalContent>
         đánh giá Xếp hạng trung bình sẽ được hiển thị sau khi có 3 đánh giá
       </TotalContent>

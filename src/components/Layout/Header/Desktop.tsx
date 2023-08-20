@@ -1,7 +1,50 @@
 import React from 'react';
 import type { MenuProps } from 'antd';
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
-import { ButtonDivider, Container, Header, HeaderContent, HostLink, LanguageIconButton, LogoLink, LogoLinkFull, LogoWrapper, NavBarContent, NavBarWrapper, Overlay, ProfileButton, ProfileDropdown, SearchBarWrapper, SearchButton, SearchButtonGroup, SearchButtonLabel, SearchForm, SearchIcon, SearchInput, SearchInputAddressBox, SearchInputBox, SearchInputButtonBox, SearchInputFrame, SearchInputFrameDivider, SearchInputGuestBox, SearchInputIconButton, SearchInputItem, SearchInputItemContent, SearchInputItemWrapper, SearchInputLabel, SearchInputPlaceholder, SearchInputRoomBox, SearchInputTitle, SearchNavBox, SearchNavButton, SearchNavButtonLabel, SearchNavContent, SearchNavItem, SearchNavList, SearchNavWrapper } from './styled';
+import {
+  ButtonDivider,
+  Container,
+  Header,
+  HeaderContent,
+  HostLink,
+  LanguageIconButton,
+  LogoLink,
+  LogoLinkFull,
+  LogoWrapper,
+  NavBarContent,
+  NavBarWrapper,
+  Overlay,
+  ProfileButton,
+  ProfileDropdown,
+  SearchBarWrapper,
+  SearchButton,
+  SearchButtonGroup,
+  SearchButtonLabel,
+  SearchForm,
+  SearchIcon,
+  SearchInput,
+  SearchInputAddressBox,
+  SearchInputBox,
+  SearchInputButtonBox,
+  SearchInputFrame,
+  SearchInputFrameDivider,
+  SearchInputGuestBox,
+  SearchInputIconButton,
+  SearchInputItem,
+  SearchInputItemContent,
+  SearchInputItemWrapper,
+  SearchInputLabel,
+  SearchInputPlaceholder,
+  SearchInputRoomBox,
+  SearchInputTitle,
+  SearchNavBox,
+  SearchNavButton,
+  SearchNavButtonLabel,
+  SearchNavContent,
+  SearchNavItem,
+  SearchNavList,
+  SearchNavWrapper,
+} from './styled';
 import { Bars, GlobeIcon, LogoBrandIcon } from 'components/Icons';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { selectAccount, selectAppDevice, setLogOut } from 'slice';
@@ -29,12 +72,18 @@ const loggedOutItems: MenuProps['items'] = [
   },
 ];
 
-const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowModal: (key: string) => void }) => {
+const Desktop = ({
+  locationList,
+  onShowModal,
+}: {
+  locationList: any[];
+  onShowModal: (key: string) => void;
+}) => {
   const [isSearchBarOpen, setIsSearchBarOpen] = React.useState(false);
   const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
-  const [selectedLocationId, setSelecedLocationId] = React.useState()
+  const [selectedLocationId, setSelecedLocationId] = React.useState();
   const appDevice = useAppSelector(selectAppDevice);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const { account, error, isAuthenticated } = useAppSelector(selectAccount);
   const id = account?.user.id;
 
@@ -77,66 +126,70 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
       key: '8',
       label: 'Đăng xuất',
     },
-  ]
+  ];
 
   React.useEffect(() => {
-    if (locationList.length > 0) {
+    if (locationList?.length > 0) {
       const locationNameListArr = locationList.map(location => {
         return {
           value: location.id,
-          label: `${location.tenViTri}, ${location.tinhThanh}`
-        }
-      })
-      setLocationNameList(locationNameListArr)
+          label: `${location.tenViTri}, ${location.tinhThanh}`,
+        };
+      });
+      setLocationNameList(locationNameListArr);
     }
-
-  }, [locationList])
+  }, [locationList]);
 
   const openSearchBarByAddressHandler = () => {
     setIsSearchBarOpen(true);
   };
 
   const closeSearcBarHandler = () => {
-    setIsSearchBarOpen(false)
-  }
+    setIsSearchBarOpen(false);
+  };
 
   const scrollHandler = () => {
     if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      setIsSearchBarOpen(false)
+      setIsSearchBarOpen(false);
     }
-  }
+  };
 
-  window.onscroll = () => { scrollHandler() }
-
+  window.onscroll = () => {
+    scrollHandler();
+  };
 
   const changeLocationHandler = (value: any) => {
-    setSelecedLocationId(value)
-  }
+    setSelecedLocationId(value);
+  };
 
   const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
-    onShowModal(key)
+    onShowModal(key);
   };
 
   const handleProfileMenuClick: MenuProps['onClick'] = ({ key }) => {
     if (key === '8') {
-      dispatch(setLogOut({}))
+      dispatch(setLogOut({}));
     }
   };
 
   const profileMenuLoggedIn = {
     items: loggedInItems,
-    onClick: handleProfileMenuClick
+    onClick: handleProfileMenuClick,
   };
 
   const profileMenuLoggedOut = {
     items: loggedOutItems,
-    onClick: handleMenuClick
+    onClick: handleMenuClick,
   };
 
   return (
     <>
       <Header searchBarOpen={isSearchBarOpen}>
-        <Container maxWidth={appDevice.maxWidth} paddingLeft={appDevice.paddingLeft} paddingRight={appDevice.paddingRight}>
+        <Container
+          maxWidth={appDevice.maxWidth}
+          paddingLeft={appDevice.paddingLeft}
+          paddingRight={appDevice.paddingRight}
+        >
           <HeaderContent>
             {/* Logo Wrapper */}
             <LogoWrapper>
@@ -202,23 +255,28 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                         <SearchInputFrame>
                           <SearchInputAddressBox>
                             <SearchInputItem>
-                              <SearchInputLabel htmlFor='location-input'>
-                                <SearchInputTitle>
-                                  Địa điểm
-                                </SearchInputTitle>
-                                <SearchInput showSearch
+                              <SearchInputLabel htmlFor="location-input">
+                                <SearchInputTitle>Địa điểm</SearchInputTitle>
+                                <SearchInput
+                                  showSearch
                                   allowClear
                                   suffixIcon={null}
                                   bordered={false}
                                   placeholder="Tìm kiếm điểm đến"
                                   optionFilterProp="children"
-                                  filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                                  filterOption={(input, option) =>
+                                    (option?.label ?? '').includes(input)
+                                  }
                                   filterSort={(optionA, optionB) =>
-                                    (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                                    (optionA?.label ?? '')
+                                      .toLowerCase()
+                                      .localeCompare(
+                                        (optionB?.label ?? '').toLowerCase()
+                                      )
                                   }
                                   options={locationNameList}
                                   dropdownStyle={{ padding: '24' }}
-                                  id='location-input'
+                                  id="location-input"
                                   onChange={changeLocationHandler}
                                 />
                               </SearchInputLabel>
@@ -231,7 +289,9 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                             <SearchInputItem>
                               <SearchInputItemContent>
                                 <SearchInputItemWrapper>
-                                  <SearchInputTitle>Nhận phòng</SearchInputTitle>
+                                  <SearchInputTitle>
+                                    Nhận phòng
+                                  </SearchInputTitle>
                                   <SearchInputPlaceholder>
                                     Thêm ngày
                                   </SearchInputPlaceholder>
@@ -291,7 +351,9 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                   icon={<GlobeIcon width={16} height={16} color="initial" />}
                 ></LanguageIconButton>
                 <ProfileDropdown
-                  menu={isAuthenticated ? profileMenuLoggedIn : profileMenuLoggedOut}
+                  menu={
+                    isAuthenticated ? profileMenuLoggedIn : profileMenuLoggedOut
+                  }
                   placement="bottomRight"
                   trigger={['click']}
                 >
@@ -302,17 +364,23 @@ const Desktop = ({ locationList, onShowModal }: { locationList: any[], onShowMod
                       styles={{ display: 'block' }}
                       color="initial"
                     />
-                    {isAuthenticated && account?.user.avatar === '' &&
-                      <Avatar size={32} backgroundColor='#222'>{account?.user.name?.[0].toUpperCase()}</Avatar>
-                    }
+                    {isAuthenticated && account?.user.avatar === '' && (
+                      <Avatar size={32} backgroundColor="#222">
+                        {account?.user.name?.[0].toUpperCase()}
+                      </Avatar>
+                    )}
 
-                    {isAuthenticated && account?.user.avatar !== '' &&
+                    {isAuthenticated && account?.user.avatar !== '' && (
                       <Avatar size={32} src={account?.user.avatar}></Avatar>
-                    }
+                    )}
 
-                    {!isAuthenticated &&
-                      <Avatar size={32} backgroundColor='#9e9e9e' icon={<UserOutlined style={{ fontSize: '18px' }} />}></Avatar>
-                    }
+                    {!isAuthenticated && (
+                      <Avatar
+                        size={32}
+                        backgroundColor="#9e9e9e"
+                        icon={<UserOutlined style={{ fontSize: '18px' }} />}
+                      ></Avatar>
+                    )}
                   </ProfileButton>
                 </ProfileDropdown>
               </NavBarContent>
