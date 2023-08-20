@@ -23,7 +23,11 @@ axiosClient.interceptors.response.use(
 );
 
 export const updateTokenBearer = (token: string) => {
-  axiosClient.defaults.headers.common.Authorization = token;
+  axiosClient.defaults.headers.common['tokens'] = token;
+};
+
+export const removeCurrentEntity = () => {
+  delete axiosClient.defaults.headers.common['tokens'];
 };
 
 export default axiosClient;
