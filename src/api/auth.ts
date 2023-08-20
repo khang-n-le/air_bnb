@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { airBnbService } from './services/index';
 import { Stringifier } from 'styled-components/dist/types';
+import { Account } from './common';
 
 const pathname = '/auth'
 
@@ -35,16 +36,3 @@ export interface PostAccount {
     password: string,
 }
 
-export interface Account {
-    user: {
-        id?: string,
-        avatar?: string,
-        name?: string,
-        email?: string,
-        password?: string,
-        phone?: string,
-        birthday?: string,
-        gender?: boolean,
-    },
-    token?: string
-}

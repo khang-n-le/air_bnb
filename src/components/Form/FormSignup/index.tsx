@@ -3,9 +3,9 @@ import { AlertBox, AlertText, CDatePicker, CFormSignup, CInput, CInputPassword, 
 import { Form, Select } from 'antd'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { selectAccount, signUp } from 'slice'
-import { Account } from 'api/auth'
 import { useNavigate } from 'react-router-dom'
 import { DangerAlertIcon } from 'components/Icons'
+import { Account } from 'api/common'
 
 type Props = {
     onOk: () => void,

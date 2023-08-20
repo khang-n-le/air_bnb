@@ -12,8 +12,8 @@ import {
 
 import UserInfoItem from './UserInfoItem';
 import UserInfoItemForm from './UserInfoItemForm';
-import { useAppSelector } from 'app/hooks';
-import { selectUser } from 'slice';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { selectUser, updateUserById } from 'slice';
 import { Form, Select } from 'antd';
 import dayjs from 'dayjs';
 
@@ -21,6 +21,8 @@ type Props = {};
 
 const UserInfo = (props: Props) => {
   const { user } = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+
   const [isUpdatingName, setIsUpdatingName] = React.useState(false);
   const [isUpdatingEmail, setIsUpdatingEmail] = React.useState(false);
   const [isUpdatingPhone, setIsUpdatingPhone] = React.useState(false);
@@ -29,9 +31,10 @@ const UserInfo = (props: Props) => {
   const [isItemDisabled, setIsItemDisabled] = React.useState(false);
 
   const [form] = Form.useForm();
-  const dateFormat = 'DD/MM/YYYY';
-  const birthDayFormat = dayjs(user?.birthday, dateFormat);
   const { Option } = Select;
+  const dateFormat = 'DD/MM/YYYY';
+  const birthDayFormat = dayjs(user?.birthday);
+  const birthDayStringFormat = birthDayFormat.format(dateFormat);
 
   const changeUpdateStateHandler = (event: any) => {
     if (event.target.offsetParent.id === 'legalName') {
@@ -53,12 +56,50 @@ const UserInfo = (props: Props) => {
   };
 
   const submitHandler = (values: any) => {
-    console.log(values);
+    for (const key in values) {
+      if (key === 'legalName') {
+        dispatch(updateUserById({ ...user, name: values.legalName }));
+        setIsUpdatingName(!isUpdatingName);
+        setIsItemDisabled(!isItemDisabled);
+      } else if (key === 'email') {
+        dispatch(updateUserById({ ...user, email: values.email }));
+        setIsUpdatingEmail(!isUpdatingEmail);
+        setIsItemDisabled(!isItemDisabled);
+      } else if (key === 'phone') {
+        dispatch(updateUserById({ ...user, phone: values.phone }));
+        setIsUpdatingPhone(!isUpdatingPhone);
+        setIsItemDisabled(!isItemDisabled);
+      } else if (key === 'birthday') {
+        dispatch(updateUserById({ ...user, birthday: values.birthday }));
+        setIsUpdatingBirthday(!isUpdatingBirthday);
+        setIsItemDisabled(!isItemDisabled);
+      } else if (key === 'gender') {
+        dispatch(
+          updateUserById({
+            ...user,
+            gender: values.gender === 'male' ? true : false,
+          })
+        );
+        setIsUpdatingGender(!isUpdatingGender);
+        setIsItemDisabled(!isItemDisabled);
+      }
+    }
   };
 
   React.useEffect(() => {
-    console.log('data1', user);
-    form.setFieldValue('legalName', 'Khang le');
+    form.setFieldsValue({
+      legalName: user?.name,
+      email: user?.email,
+      phone:
+        user?.phone === 'string' || user?.birthday.length == 0
+          ? undefined
+          : user?.phone,
+      birthday:
+        user?.birthday === 'string' || user?.birthday.length == 0
+          ? undefined
+          : birthDayFormat,
+      gender: user?.gender === true ? 'Nam' : 'Nữ',
+    });
   }, [user]);
 
   return (
@@ -71,7 +112,7 @@ const UserInfo = (props: Props) => {
           id="legalName"
           title="Tên pháp lý"
           subtitle={
-            user?.name === 'string' || user?.name?.length == 0
+            user?.name === 'string' || user?.name.length == 0
               ? 'Chưa được cung cấp'
               : user?.name
           }
@@ -86,12 +127,7 @@ const UserInfo = (props: Props) => {
               formItemName="legalName"
               onSubmit={submitHandler}
             >
-              <TextInput
-                name="legalName"
-                placeholder="Họ tên"
-                // defaultValue={user?.name}
-                size="large"
-              />
+              <TextInput name="legalName" placeholder="Họ tên" size="large" />
             </UserInfoItemForm>
           )}
         </UserInfoItem>
@@ -120,12 +156,7 @@ const UserInfo = (props: Props) => {
                 },
               ]}
             >
-              <TextInput
-                name="email"
-                placeholder="Email"
-                defaultValue={user?.email}
-                size="large"
-              />
+              <TextInput name="email" placeholder="Email" size="large" />
             </UserInfoItemForm>
           )}
         </UserInfoItem>
@@ -151,7 +182,6 @@ const UserInfo = (props: Props) => {
               <TextInput
                 name="phone"
                 placeholder="Số điện thoại"
-                defaultValue={user?.phone}
                 size="large"
               />
             </UserInfoItemForm>
@@ -163,7 +193,7 @@ const UserInfo = (props: Props) => {
           subtitle={
             user?.birthday === 'string' || user?.birthday.length == 0
               ? 'Chưa được cung cấp'
-              : user?.birthday
+              : birthDayStringFormat
           }
           isUpdating={isUpdatingBirthday}
           onChangeUpdateState={changeUpdateStateHandler}
@@ -180,11 +210,6 @@ const UserInfo = (props: Props) => {
                 size="large"
                 placeholder="Lựa chọn ngày sinh"
                 format={dateFormat}
-                defaultValue={
-                  user?.birthday === 'string' || user?.birthday.length == 0
-                    ? undefined
-                    : birthDayFormat
-                }
                 name="birthday"
               />
             </UserInfoItemForm>
@@ -205,11 +230,7 @@ const UserInfo = (props: Props) => {
               onSubmit={submitHandler}
               form={form}
             >
-              <SelectInput
-                size="large"
-                placeholder="Lựa chọn giới tính"
-                defaultValue={user?.gender === true ? 'Nam' : 'Nữ'}
-              >
+              <SelectInput size="large" placeholder="Lựa chọn giới tính">
                 <Option value="male">Nam</Option>
                 <Option value="female">Nữ</Option>
               </SelectInput>

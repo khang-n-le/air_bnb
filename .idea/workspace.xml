@@ -3,14 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/services/airBnb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/services/airBnb.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Items/HomeItem/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Items/HomeItem/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Header/Desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Header/Desktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Search/Desktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Search/Desktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/UserProfile/Components/UserAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UserProfile/Components/UserAvatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/common/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/common/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/FormSignup/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/FormSignup/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/UserProfile/Components/UserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/UserProfile/Components/UserInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/slice/accountSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/accountSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slice/userSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/userSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +36,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/T14/Documents/last company/hub-/hub-admin",
+    "last_opened_file_path": "C:/Users/T14/Documents/air_bnb",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,7 +75,8 @@
       <workItem from="1691633837560" duration="11622000" />
       <workItem from="1691681010134" duration="999000" />
       <workItem from="1692075599120" duration="152000" />
-      <workItem from="1692526457050" duration="1441000" />
+      <workItem from="1692526457050" duration="1869000" />
+      <workItem from="1692546770071" duration="321000" />
     </task>
     <servers />
   </component>
