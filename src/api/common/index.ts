@@ -23,6 +23,20 @@ export interface GetUser {
   id?: string;
 }
 
+export interface Account {
+  user: {
+    id?: string,
+    avatar?: string,
+    name?: string,
+    email?: string,
+    password?: string,
+    phone?: string,
+    birthday?: string,
+    gender?: boolean,
+  },
+  token?: string
+}
+
 export const serialize = (obj: any) => {
   const keys = Object.keys(obj);
   let query = '?';

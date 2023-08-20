@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GetUser } from "api/common";
+import { Account, GetUser } from "api/common";
 import { userApi } from "api/user";
 import { RootState } from "app/store";
 
@@ -8,6 +8,23 @@ export const getUserById = createAsyncThunk(
     async (option: GetUser, { rejectWithValue }) => {
         try {
             const response = userApi.getUserById(option);
+
+            return response
+        } catch (error: any) {
+            if (!error.response) {
+                throw error
+            }
+
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
+export const updateUserById = createAsyncThunk(
+    'user/updateUserById',
+    async (option: Account['user'], { rejectWithValue }) => {
+        try {
+            const response = userApi.updateUserById(option);
 
             return response
         } catch (error: any) {
@@ -51,6 +68,10 @@ const userSlice = createSlice({
 
         builder.addCase(getUserById.rejected, (state, action) => {
             console.log(action)
+        })
+
+        builder.addCase(updateUserById.fulfilled, (state, action) => {
+            state.user = (action.payload as any).content
         })
     }
 })

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { Account, PostAccount, authApi } from 'api/auth';
+import { PostAccount, authApi } from 'api/auth';
+import { Account } from 'api/common';
 import { RootState } from 'app/store';
 import { removeLocalStorage, setLocalStorage } from 'utils/localStorage';
 
