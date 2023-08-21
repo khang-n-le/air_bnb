@@ -1,6 +1,7 @@
 import React from 'react'
 import { UploadAvatarButton, UploadInput, UploadLabel, UploadLabelContent, UploadLabelIcon, UploadLabelText } from './styled'
 import { Camera } from 'components/Icons/Camera'
+import { userApi } from 'api/user'
 
 type Props = {
     children: string
@@ -9,6 +10,19 @@ type Props = {
 const UploadAvatar = (props: Props) => {
     const handleImageChange = (event: any) => {
         console.log(event)
+
+        const uploadAvatar = async (event: any) => {
+            try {
+                const response = userApi.updateAvatar(event.target.value)
+
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+                throw error
+            }
+        }
+
+        uploadAvatar(event)
     }
 
     return (

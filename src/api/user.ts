@@ -27,6 +27,18 @@ export const userApi = {
         } catch (error) {
             throw error
         }
+    },
+
+    updateAvatar: async (image: string) => {
+        let url = `${pathname}/upload-avatar`
+
+        try {
+            const response = await airBnbService.post(url, image)
+
+            return response
+        } catch (error) {
+            throw error
+        }
     }
 };
 
