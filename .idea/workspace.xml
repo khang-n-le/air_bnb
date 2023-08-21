@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/configRouter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/slice/locationSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/locationSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +70,7 @@
       <workItem from="1692075599120" duration="152000" />
       <workItem from="1692526457050" duration="1869000" />
       <workItem from="1692546770071" duration="941000" />
-      <workItem from="1692587708089" duration="315000" />
+      <workItem from="1692587708089" duration="1183000" />
     </task>
     <servers />
   </component>
