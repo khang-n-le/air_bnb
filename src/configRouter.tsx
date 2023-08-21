@@ -7,7 +7,7 @@ import { Footer, Header } from './components';
 import { publicRoutes } from './utils/routes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import { findAllLocation, loggedInAccount, setError } from './slice';
+import { findAllLocation, loggedInAccount, selectAccount, setAuthTitle, setError } from './slice';
 import Modal from 'components/Modal';
 import { getLocalStorage } from 'utils';
 
@@ -15,7 +15,8 @@ export const Router = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [pathName, setPathName] = React.useState<string>('');
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [authTitle, setAuthTitle] = React.useState<string>('');
+  const { authTitle } = useAppSelector(selectAccount)
+  // const [authTitle, setAuthTitle] = React.useState<string>('');
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -28,9 +29,9 @@ export const Router = (): JSX.Element => {
 
   const showModal = (key: string) => {
     if (key == '1') {
-      setAuthTitle('Đăng ký');
+      dispatch(setAuthTitle('Đăng ký'))
     } else if (key == '2') {
-      setAuthTitle('Đăng nhập');
+      dispatch(setAuthTitle('Đăng nhập'))
     }
     setIsModalOpen(true);
   };
@@ -118,7 +119,6 @@ export const Router = (): JSX.Element => {
         </Content>
       </ContentWrapper>
       <Footer></Footer>
-      {/* {pathName != '/' && <Footer></Footer>} */}
     </Wrapper>
   );
 };
@@ -132,13 +132,11 @@ const Wrapper = styled.div`
   min-height: calc(calc(var(--vh, 1vh) * 100) - 1px);
   height: calc(calc(var(--vh, 1vh) * 100) - 1px);
 `;
-// max-width: ${p =>
-//     p.isHomePage ? 'var(--home-max-width)' : 'var(--max-width)'};
+
 const ContentWrapper = styled.div<{ isHomePage?: boolean }>`
   width: 100%;
   display: flex;
   justify-content: center;
-  /* padding: 0px 80px; */
 
   @media only screen and (max-width: 1440px) {
     /* padding: 0px 40px; */

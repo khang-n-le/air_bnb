@@ -43,6 +43,7 @@ interface InitialState {
   error: string;
   isAuthenticated: boolean;
   isLogInForm: boolean | null;
+  authTitle: string
 }
 
 const initialState: InitialState = {
@@ -50,6 +51,7 @@ const initialState: InitialState = {
   error: '',
   isAuthenticated: false,
   isLogInForm: null,
+  authTitle: ''
 };
 
 const accountSlice = createSlice({
@@ -71,6 +73,9 @@ const accountSlice = createSlice({
     setIsLogInForm: (state, action) => {
       state.isLogInForm = action.payload;
     },
+    setAuthTitle: (state, action) => {
+      state.authTitle = action.payload
+    }
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action) => {
@@ -111,7 +116,7 @@ const accountSlice = createSlice({
 
 const { actions, reducer: accountReducer } = accountSlice;
 
-export const { loggedInAccount, setError, setLogOut, setIsLogInForm } = actions;
+export const { loggedInAccount, setError, setLogOut, setIsLogInForm, setAuthTitle } = actions;
 
 export default accountReducer;
 
