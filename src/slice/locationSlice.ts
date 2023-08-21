@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { locationApi } from 'api';
 import { FindOneOptions, FindOptions } from 'api/common';
 import { RootState } from 'app/store';
 
@@ -6,8 +7,9 @@ export const findAllLocation = createAsyncThunk(
   'area/findAllLocation',
   async (option: FindOneOptions, { rejectWithValue }) => {
     try {
-      // const response = await locationApi.findAll(option);
-      // return response;
+      const response = await locationApi.findAll(option);
+
+      return response;
     } catch (error: any) {
       if (!error.response) {
         throw error;

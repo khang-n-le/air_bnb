@@ -19,19 +19,18 @@ export const Router = (): JSX.Element => {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-    dispatch(setError(''))
+    dispatch(setError(''));
   };
 
   const handleOk = () => {
     setIsModalOpen(false);
-  }
-
+  };
 
   const showModal = (key: string) => {
     if (key == '1') {
-      setAuthTitle('Đăng ký')
+      setAuthTitle('Đăng ký');
     } else if (key == '2') {
-      setAuthTitle('Đăng nhập')
+      setAuthTitle('Đăng nhập');
     }
     setIsModalOpen(true);
   };
@@ -77,16 +76,21 @@ export const Router = (): JSX.Element => {
     const storedAccount = getLocalStorage('account');
 
     if (storedAccount) {
-      dispatch(loggedInAccount(storedAccount))
+      dispatch(loggedInAccount(storedAccount));
     }
-  }, [])
+  }, []);
 
   return (
     <Wrapper>
       <ContentWrapper isHomePage={pathName == '/'}>
         <Content maxWidth={appDevice.maxWidth}>
           <BrowserRouter>
-            <Modal open={isModalOpen} onCancel={handleCancel} title={authTitle} onOk={handleOk}></Modal>
+            <Modal
+              open={isModalOpen}
+              onCancel={handleCancel}
+              title={authTitle}
+              onOk={handleOk}
+            ></Modal>
             <Header onShowModal={showModal}></Header>
             <GlobalStyle></GlobalStyle>
 
@@ -145,6 +149,3 @@ const Content = styled.div<{ maxWidth: string }>`
   /* max-width: ${p => p.maxWidth}; */
   width: 100%;
 `;
-
-
-
