@@ -1,39 +1,54 @@
-import React from 'react'
-import { UploadAvatarButton, UploadInput, UploadLabel, UploadLabelContent, UploadLabelIcon, UploadLabelText } from './styled'
-import { Camera } from 'components/Icons/Camera'
-import { userApi } from 'api/user'
-import { useAppDispatch } from 'app/hooks'
-import { uploadUserAvatar } from 'slice'
+import React from 'react';
+import {
+  UploadAvatarButton,
+  UploadInput,
+  UploadLabel,
+  UploadLabelContent,
+  UploadLabelIcon,
+  UploadLabelText,
+} from './styled';
+import { Camera } from 'components/Icons/Camera';
+import { useAppDispatch } from 'app/hooks';
+import { uploadUserAvatar } from 'slice';
 
 type Props = {
-    children: string
-}
+  children: string;
+};
 
 const UploadAvatar = (props: Props) => {
-    const dispatch = useAppDispatch()
-    const handleImageChange = (event: any) => {
-        console.log(event.target.files[0])
-        event.preventDefault()
-        const uploadAvatar = async () => {
-            const formData = new FormData();
-            formData.append('avatar', event.target.files[0])
-            dispatch(uploadUserAvatar(formData))
-        }
+  const dispatch = useAppDispatch();
+  const handleImageChange = (event: any) => {
+    console.log(event.target.files[0]);
+    event.preventDefault();
+    const uploadAvatar = async () => {
+      const formData = new FormData();
+      formData.append('formFile', event.target.files[0]);
 
-        uploadAvatar()
-    }
+      dispatch(uploadUserAvatar(formData));
+    };
 
-    return (
-        <UploadAvatarButton>
-            <UploadInput type='file' accept='image/png, image/jpeg' id='upload-avatar-input' name='upload-avatar-input' onChange={handleImageChange} />
-            <UploadLabel htmlFor='upload-avatar-input'>
-                <UploadLabelContent>
-                    <UploadLabelIcon><Camera width={16} height={16} styles={{ display: 'block' }} /></UploadLabelIcon>
-                    <UploadLabelText>{props.children}</UploadLabelText>
-                </UploadLabelContent>
-            </UploadLabel>
-        </UploadAvatarButton>
-    )
-}
+    uploadAvatar();
+  };
 
-export default UploadAvatar
+  return (
+    <UploadAvatarButton>
+      <UploadInput
+        type="file"
+        accept="image/png, image/jpeg"
+        id="upload-avatar-input"
+        name="upload-avatar-input"
+        onChange={handleImageChange}
+      />
+      <UploadLabel htmlFor="upload-avatar-input">
+        <UploadLabelContent>
+          <UploadLabelIcon>
+            <Camera width={16} height={16} styles={{ display: 'block' }} />
+          </UploadLabelIcon>
+          <UploadLabelText>{props.children}</UploadLabelText>
+        </UploadLabelContent>
+      </UploadLabel>
+    </UploadAvatarButton>
+  );
+};
+
+export default UploadAvatar;

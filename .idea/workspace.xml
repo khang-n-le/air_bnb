@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
-      <change afterPath="$PROJECT_DIR$/src/api/services/upload.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/services/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/services/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/services/upload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/services/upload.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UploadAvatar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploadAvatar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/slice/accountSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/slice/accountSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/T14/Documents/air_bnb/src/api/services",
+    "last_opened_file_path": "C:/Users/T14/Documents/last company/hub-/hub-admin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -76,7 +76,8 @@
       <workItem from="1692546770071" duration="941000" />
       <workItem from="1692587708089" duration="1739000" />
       <workItem from="1692605569007" duration="7734000" />
-      <workItem from="1692688042440" duration="197000" />
+      <workItem from="1692688042440" duration="530000" />
+      <workItem from="1692691222191" duration="1451000" />
     </task>
     <servers />
   </component>
@@ -115,6 +116,11 @@
           <url>file://$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx</url>
           <line>50</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/slice/userSlice.ts</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
