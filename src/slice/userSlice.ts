@@ -39,10 +39,8 @@ export const updateUserById = createAsyncThunk(
 
 export const uploadUserAvatar = createAsyncThunk(
     'user/uploadUserAvatar',
-    async (image: any, { rejectWithValue }) => {
+    async (formData: any, { rejectWithValue }) => {
         try {
-            const formData = new FormData();
-            formData.append('upload-avatar-input', image)
             const response = userApi.uploadUserAvatar(formData);
 
             return response

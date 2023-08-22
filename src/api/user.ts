@@ -1,19 +1,18 @@
-
 import { Account, GetUser } from './common';
-import { airBnbService } from './services/index';
+import { uploadService, airBnbService } from './services/index';
 
-const pathname = '/users'
+const pathname = '/users';
 
 export const userApi = {
     getUserById: async (option: GetUser) => {
         let url = `${pathname}/${option.id}`;
 
         try {
-            const response = await airBnbService.get(url)
+            const response = await airBnbService.get(url);
 
-            return response
+            return response;
         } catch (error) {
-            throw error
+            throw error;
         }
     },
 
@@ -21,11 +20,11 @@ export const userApi = {
         let url = `${pathname}/${option.id}`;
 
         try {
-            const response = await airBnbService.put(url, option)
+            const response = await uploadService.put(url, option);
 
-            return response
+            return response;
         } catch (error) {
-            throw error
+            throw error;
         }
     },
 
@@ -33,12 +32,11 @@ export const userApi = {
         let url = `${pathname}/upload-avatar`
 
         try {
-            const response = await airBnbService.post(url, image)
+            const response = await uploadService.post(url, image);
 
-            return response
+            return response;
         } catch (error) {
-            throw error
+            throw error;
         }
-    }
+    },
 };
-

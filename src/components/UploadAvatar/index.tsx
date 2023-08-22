@@ -14,14 +14,13 @@ const UploadAvatar = (props: Props) => {
     const handleImageChange = (event: any) => {
         console.log(event.target.files[0])
         event.preventDefault()
-        dispatch(uploadUserAvatar(event.target.files[0]))
-        // const uploadAvatar = async () => {
-        //     const formData = new FormData();
-        //     formData.append('upload-avatar-input', event.target.files[0])
+        const uploadAvatar = async () => {
+            const formData = new FormData();
+            formData.append('avatar', event.target.files[0])
+            dispatch(uploadUserAvatar(formData))
+        }
 
-        // }
-
-        // uploadAvatar()
+        uploadAvatar()
     }
 
     return (
