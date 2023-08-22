@@ -3,7 +3,10 @@ import { PostAccount, authApi } from 'api/auth';
 import { Account } from 'api/common';
 import { RootState } from 'app/store';
 import { removeLocalStorage, setLocalStorage } from 'utils/localStorage';
-import { removeCurrentEntity, updateTokenBearer } from 'api/services/airBnb';
+import {
+  removeCurrentEntity,
+  updateTokenBearer as updateEntityTokenBearer,
+} from 'api/services/airBnb';
 
 export const login = createAsyncThunk(
   'account/login',
@@ -43,7 +46,7 @@ interface InitialState {
   error: string;
   isAuthenticated: boolean;
   isLogInForm: boolean | null;
-  authTitle: string
+  authTitle: string;
 }
 
 const initialState: InitialState = {
@@ -51,7 +54,7 @@ const initialState: InitialState = {
   error: '',
   isAuthenticated: false,
   isLogInForm: null,
-  authTitle: ''
+  authTitle: '',
 };
 
 const accountSlice = createSlice({
@@ -74,13 +77,13 @@ const accountSlice = createSlice({
       state.isLogInForm = action.payload;
     },
     setAuthTitle: (state, action) => {
-      state.authTitle = action.payload
-    }
+      state.authTitle = action.payload;
+    },
   },
   extraReducers: builder => {
     builder.addCase(login.fulfilled, (state, action) => {
       setLocalStorage('account', (action.payload as any).content);
-      updateTokenBearer((action.payload as any).content.token);
+      updateEntityTokenBearer((action.payload as any).content.token);
 
       state.account = (action.payload as any).content;
       state.isAuthenticated = true;
@@ -116,7 +119,13 @@ const accountSlice = createSlice({
 
 const { actions, reducer: accountReducer } = accountSlice;
 
-export const { loggedInAccount, setError, setLogOut, setIsLogInForm, setAuthTitle } = actions;
+export const {
+  loggedInAccount,
+  setError,
+  setLogOut,
+  setIsLogInForm,
+  setAuthTitle,
+} = actions;
 
 export default accountReducer;
 

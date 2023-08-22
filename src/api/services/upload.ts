@@ -1,9 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
 
-import { env } from 'env';
-import axiosClient from './airBnb';
-
 const { CancelToken } = axios;
 export const sourceCancel = CancelToken.source();
 
@@ -34,7 +31,7 @@ uploadService.interceptors.response.use(
   }
 );
 
-axiosClient.interceptors.request.use(function (config) {
+uploadService.interceptors.request.use(function (config) {
   const token = JSON.parse(localStorage.getItem('account') as string)?.token;
   config.headers.token = token ? token : '';
 
