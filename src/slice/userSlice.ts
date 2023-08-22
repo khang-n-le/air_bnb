@@ -37,6 +37,23 @@ export const updateUserById = createAsyncThunk(
     }
 )
 
+export const uploadUserAvatar = createAsyncThunk(
+    'user/uploadUserAvatar',
+    async (formData: any, { rejectWithValue }) => {
+        try {
+            const response = userApi.uploadUserAvatar(formData);
+
+            return response
+        } catch (error: any) {
+            if (!error.response) {
+                throw error
+            }
+
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
+
 interface User {
     id: string,
     name: string,
@@ -72,6 +89,14 @@ const userSlice = createSlice({
 
         builder.addCase(updateUserById.fulfilled, (state, action) => {
             state.user = (action.payload as any).content
+        })
+
+        builder.addCase(uploadUserAvatar.fulfilled, (state, action) => {
+            console.log(action)
+        })
+
+        builder.addCase(uploadUserAvatar.rejected, (state, action) => {
+            console.log(action)
         })
     }
 })
