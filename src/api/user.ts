@@ -29,7 +29,7 @@ export const userApi = {
         }
     },
 
-    updateAvatar: async (image: string) => {
+    uploadUserAvatar: async (image: any) => {
         let url = `${pathname}/upload-avatar`
 
         try {
