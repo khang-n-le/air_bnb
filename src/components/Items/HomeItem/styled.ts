@@ -63,6 +63,13 @@ font-size: ${p => p.theme.font.size.sm};
     text-overflow: ellipsis;
     white-space: nowrap;
 `
+export const CardNumberOfGuests = styled.p`
+    font-size: ${p => p.theme.font.size.sm};
+    color: ${p => p.theme.colors.text.secondary};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`
 
 export const CardBookingDuration = styled.p`
 font-size: ${p => p.theme.font.size.sm};

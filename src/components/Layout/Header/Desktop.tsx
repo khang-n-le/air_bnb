@@ -47,7 +47,7 @@ import {
 } from './styled';
 import { Bars, GlobeIcon, LogoBrandIcon } from 'components/Icons';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { selectAccount, selectAppDevice, setLogOut } from 'slice';
+import { selectAccount, selectAppDevice, selectUser, setLogOut } from 'slice';
 import Avatar from 'components/Avatar';
 
 const loggedOutItems: MenuProps['items'] = [
@@ -83,6 +83,7 @@ const Desktop = ({
   const [locationNameList, setLocationNameList] = React.useState<any[]>([]);
   const [selectedLocationId, setSelecedLocationId] = React.useState();
   const appDevice = useAppSelector(selectAppDevice);
+  const { user } = useAppSelector(selectUser)
   const dispatch = useAppDispatch();
   const { account, error, isAuthenticated } = useAppSelector(selectAccount);
   const id = account?.user.id;
@@ -364,14 +365,14 @@ const Desktop = ({
                       styles={{ display: 'block' }}
                       color="initial"
                     />
-                    {isAuthenticated && account?.user.avatar === '' && (
+                    {isAuthenticated && user?.avatar === '' && (
                       <Avatar size={32} backgroundColor="#222">
                         {account?.user.name?.[0].toUpperCase()}
                       </Avatar>
                     )}
 
-                    {isAuthenticated && account?.user.avatar !== '' && (
-                      <Avatar size={32} src={account?.user.avatar}></Avatar>
+                    {isAuthenticated && user?.avatar !== '' && (
+                      <Avatar size={32} src={user?.avatar}></Avatar>
                     )}
 
                     {!isAuthenticated && (

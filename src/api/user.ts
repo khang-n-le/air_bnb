@@ -20,7 +20,7 @@ export const userApi = {
         let url = `${pathname}/${option.id}`;
 
         try {
-            const response = await uploadService.put(url, option);
+            const response = await airBnbService.put(url, option);
 
             return response;
         } catch (error) {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import { getUserById, handleChangeWidth, selectAppDevice, selectUser } from 'slice'
+import { getUserById, handleChangeWidth, selectAppDevice } from 'slice'
 import {
     CCol,
     CRow,
@@ -8,18 +8,19 @@ import {
     UserProfileSection,
     UserProfileWrapper,
 } from './styled'
-import Avatar from 'components/Avatar'
-import { Upload } from 'antd'
-import UploadAvatar from 'components/UploadAvatar'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import UserAvatar from './Components/UserAvatar'
 import UserInfo from './Components/UserInfo'
+import { getLocalStorage } from 'utils'
+import PastRooms from './Components/PastRooms'
+import { getRoomsByUser } from 'slice/bookingSlice'
 
 type Props = {}
 
 const Desktop = (props: Props) => {
     const appDevice = useAppSelector(selectAppDevice)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { id } = useParams()
 
     React.useEffect(() => {
@@ -33,11 +34,18 @@ const Desktop = (props: Props) => {
     }, [])
 
     React.useEffect(() => {
-        const getUser = async () => {
-            await dispatch(getUserById({ id: id }))
+        const storedAccount = getLocalStorage('account')
+        if (id == storedAccount?.user.id) {
+            dispatch(getUserById({ id: id }))
+        } else {
+            navigate('/')
         }
 
-        getUser()
+        const getPastRooms = async () => {
+            await dispatch(getRoomsByUser({ id: id }))
+        }
+
+        getPastRooms()
     }, [id])
 
     return (
@@ -50,6 +58,7 @@ const Desktop = (props: Props) => {
                         </CCol>
                         <CCol span={16}>
                             <UserInfo />
+                            <PastRooms />
                         </CCol>
                     </CRow>
                 </UserProfileWrapper>

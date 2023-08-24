@@ -42,7 +42,7 @@ export const getRoomsByLocationThunk = createAsyncThunk(
 
 export const getAllRoomsThunk = createAsyncThunk(
   'room/getAllRoomsThunk',
-  async (option: FindOneOptions, { rejectWithValue }) => {
+  async (option: any, { rejectWithValue }) => {
     try {
       const response = await roomApi.getAllRooms()
 

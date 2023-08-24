@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardItem,
   CardNavigation,
+  CardNumberOfGuests,
   CardPrice,
   CardPriceBox,
   CardTitle,
@@ -16,13 +17,16 @@ import { theme } from 'styled';
 import { HeartOutlinedIcon } from 'components/Icons/HeartOutlinedIcon';
 
 type Props = {
-  roomId: string;
-  bedAmount: string;
-  roomName: string;
-  roomImage: string;
-  roomDescription: string;
-  roomPrice: string;
-  numberOfComments: string;
+  roomId?: string;
+  bedAmount?: string;
+  roomName?: string;
+  roomImage?: string;
+  roomDescription?: string;
+  roomPrice?: string;
+  numberOfComments?: string;
+  numberOfGuests?: string,
+  arriveDate?: string,
+  departureDate?: string
 };
 
 const HomeItem = (props: Props) => {
@@ -61,7 +65,12 @@ const HomeItem = (props: Props) => {
       ) : (
         <CardBedAmount>{props.bedAmount} giường</CardBedAmount>
       )}
-      <CardBookingDuration>Ngày 23 - Ngày 28 tháng 10</CardBookingDuration>
+      {props.numberOfGuests?.length == 0 ? (
+        ''
+      ) : (
+        <CardNumberOfGuests>{props.numberOfGuests} khách</CardNumberOfGuests>
+      )}
+      <CardBookingDuration>{props.arriveDate} - {props.departureDate}</CardBookingDuration>
       <CardPriceBox>
         <CardPrice>${props.roomPrice}</CardPrice> / đêm
       </CardPriceBox>

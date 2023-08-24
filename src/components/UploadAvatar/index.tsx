@@ -18,7 +18,6 @@ type Props = {
 const UploadAvatar = (props: Props) => {
   const dispatch = useAppDispatch();
   const handleImageChange = (event: any) => {
-    console.log(event.target.files[0]);
     event.preventDefault();
     const uploadAvatar = async () => {
       const formData = new FormData();
