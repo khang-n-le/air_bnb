@@ -47,6 +47,7 @@ export const UserRoleText = styled.p`
 
 export const UserInfoContainer = styled.div`
     font-family: ${p => p.theme.font.family};
+    margin-bottom: 48px;
 `
 
 export const UserInfoSectionTitleBox = styled.div``
@@ -210,4 +211,8 @@ export const UserInfoFormButton = styled(Button)`
         outline-offset: 0;
         transition: none;
     }
+`
+
+export const PastRoomsList = styled.div`
+    margin-top: 40px;
 `

@@ -23,6 +23,10 @@ export interface GetUser {
   id?: string;
 }
 
+export interface GetBookedRoom {
+  id?: string
+}
+
 export interface Account {
   user: {
     id?: string,
@@ -33,6 +37,7 @@ export interface Account {
     phone?: string,
     birthday?: string,
     gender?: boolean,
+    role?: string
   },
   token?: string
 }
