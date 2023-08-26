@@ -41,7 +41,7 @@ export const roomApi = {
 
       throw error
     }
-  }
+  },
 };
 
 export interface GetRooms {

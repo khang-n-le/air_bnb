@@ -6,6 +6,7 @@ import locationReducer from 'slice/locationSlice';
 import roomReducer from 'slice/roomSilce';
 import commentReducer from 'slice/commentSlice';
 import userReducer from 'slice/userSlice';
+import bookingReducer from 'slice/bookingSlice';
 
 const rootReducer = combineReducers({
   account: accountReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   appDevice: appDeviceReducer,
   room: roomReducer,
   comment: commentReducer,
-  user: userReducer
+  user: userReducer,
+  booking: bookingReducer
 });
 
 export default rootReducer;

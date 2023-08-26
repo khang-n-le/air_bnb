@@ -41,7 +41,7 @@ export const uploadUserAvatar = createAsyncThunk(
     'user/uploadUserAvatar',
     async (formData: any, { rejectWithValue }) => {
         try {
-            const response = userApi.uploadUserAvatar(formData);
+            const response = await userApi.uploadUserAvatar(formData);
 
             return response
         } catch (error: any) {
@@ -92,7 +92,7 @@ const userSlice = createSlice({
         })
 
         builder.addCase(uploadUserAvatar.fulfilled, (state, action) => {
-            console.log(action)
+            state.user = (action.payload as any).content
         })
 
         builder.addCase(uploadUserAvatar.rejected, (state, action) => {
