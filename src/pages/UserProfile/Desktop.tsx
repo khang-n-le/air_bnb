@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import { getUserById, handleChangeWidth, selectAppDevice } from 'slice'
+import { getAllRoomsThunk, getUserById, handleChangeWidth, selectAppDevice } from 'slice'
 import {
     CCol,
     CRow,
@@ -36,16 +36,12 @@ const Desktop = (props: Props) => {
     React.useEffect(() => {
         const storedAccount = getLocalStorage('account')
         if (id == storedAccount?.user.id) {
+            dispatch(getRoomsByUser({ id: id }))
             dispatch(getUserById({ id: id }))
+            dispatch(getAllRoomsThunk({}));
         } else {
             navigate('/')
         }
-
-        const getPastRooms = async () => {
-            await dispatch(getRoomsByUser({ id: id }))
-        }
-
-        getPastRooms()
     }, [id])
 
     return (

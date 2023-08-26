@@ -425,27 +425,27 @@ export const SearchInputPlaceholder = styled.p`
 export const SearchInput = styled(Select)`
     width: 100%;
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+    &.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
         padding: 0;
         height: 22px;
     }
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input{
+    &.ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input{
         height: 22px;
     }
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-search {
+    &.ant-select-single .ant-select-selector .ant-select-selection-search {
         inset-inline-start: 0;
         inset-inline-end: 0;
     }
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-item{
+    &.ant-select-single .ant-select-selector .ant-select-selection-item{
         line-height: 21px;
         font-weight: 700;
         color: ${p => p.theme.colors.text.primary};
     }
 
-    &:where(.css-dev-only-do-not-override-19gw05y).ant-select-single .ant-select-selector .ant-select-selection-placeholder{
+    &.ant-select-single .ant-select-selector .ant-select-selection-placeholder{
         line-height: 22px;
         color: ${p => p.theme.colors.text.secondary};
         font-family: inherit;
