@@ -21,20 +21,25 @@ export const getRoomsByUser = createAsyncThunk(
 )
 
 interface InitialState {
-    pastRooms: []
+    pastRooms: [],
+    filteredPastRooms: any[]
 }
 
 const initialState: InitialState = {
-    pastRooms: []
+    pastRooms: [],
+    filteredPastRooms: []
 }
 
 const bookingSlice = createSlice({
     name: 'booking',
     initialState,
-    reducers: {},
+    reducers: {
+        setFilteredPastRooms: (state, action) => {
+            state.filteredPastRooms = action.payload
+        }
+    },
     extraReducers: builder => {
         builder.addCase(getRoomsByUser.fulfilled, (state, action) => {
-            console.log(action)
             state.pastRooms = (action.payload as any).content
         })
         builder.addCase(getRoomsByUser.rejected, (state, action) => {
@@ -45,7 +50,7 @@ const bookingSlice = createSlice({
 
 const { actions, reducer: bookingReducer } = bookingSlice;
 
-export const { } = actions;
+export const { setFilteredPastRooms } = actions;
 
 export default bookingReducer;
 
