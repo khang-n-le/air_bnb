@@ -49,6 +49,7 @@ import { Bars, GlobeIcon, LogoBrandIcon } from 'components/Icons';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { selectAccount, selectAppDevice, selectUser, setLogOut } from 'slice';
 import Avatar from 'components/Avatar';
+import { useNavigate } from 'react-router-dom';
 
 const loggedOutItems: MenuProps['items'] = [
   {
@@ -85,6 +86,7 @@ const Desktop = ({
   const appDevice = useAppSelector(selectAppDevice);
   const { user } = useAppSelector(selectUser)
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const { account, error, isAuthenticated } = useAppSelector(selectAccount);
   const id = account?.user.id;
 
@@ -169,6 +171,7 @@ const Desktop = ({
 
   const handleProfileMenuClick: MenuProps['onClick'] = ({ key }) => {
     if (key === '8') {
+      navigate('/');
       dispatch(setLogOut({}));
     }
   };
