@@ -34,14 +34,20 @@ const Desktop = (props: Props) => {
     }, [])
 
     React.useEffect(() => {
-        const storedAccount = getLocalStorage('account')
-        if (id == storedAccount?.user.id) {
-            dispatch(getRoomsByUser({ id: id }))
-            dispatch(getUserById({ id: id }))
-            dispatch(getAllRoomsThunk({}));
-        } else {
-            navigate('/')
+        const getData = async () => {
+            const storedAccount = getLocalStorage('account')
+
+            if (id == storedAccount?.user.id) {
+                await dispatch(getRoomsByUser({ id: id }))
+                await dispatch(getUserById({ id: id }))
+                await dispatch(getAllRoomsThunk({}));
+            } else {
+                navigate('/')
+            }
         }
+
+        getData()
+
     }, [id])
 
     return (
