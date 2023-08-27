@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/Footer/mobileStyled.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer/Mobile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer/Mobile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Footer/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +32,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/T14/Documents/air_bnb",
+    "last_opened_file_path": "C:/Users/T14/Documents/test-mns-1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +79,8 @@
       <workItem from="1692688042440" duration="530000" />
       <workItem from="1692691222191" duration="2133000" />
       <workItem from="1692693863086" duration="18000" />
+      <workItem from="1693059960523" duration="1254000" />
+      <workItem from="1693092919726" duration="1699000" />
     </task>
     <servers />
   </component>
