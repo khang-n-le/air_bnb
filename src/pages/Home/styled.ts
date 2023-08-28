@@ -20,3 +20,7 @@ export const RoomsContent = styled.div``
 export const CRow = styled(Row)``
 
 export const CCol = styled(Col)``
+
+export const HomeItemBox = styled.div`
+  margin-bottom: 48px;
+`

@@ -1,4 +1,4 @@
-import { CCol, CRow, Container, RoomsContent, RoomsSection, Wrapper } from './styled';
+import { CCol, CRow, Container, HomeItemBox, RoomsContent, RoomsSection, Wrapper } from './styled';
 import { CarouselMultipleItems, CategoryItem, HomeItem } from 'components';
 import { CarouselData } from './data';
 import React from 'react';
@@ -6,10 +6,12 @@ import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { getAllRoomsThunk, getUserById, handleChangeWidth, selectAppDevice, selectRoom, selectUser } from 'slice';
 import { getLocalStorage } from 'utils';
 
-const Desktop = () => {
+interface Props { }
+
+const Desktop = (props: Props) => {
   const dispatch = useAppDispatch();
   const appDevice = useAppSelector(selectAppDevice);
-  const { allRooms } = useAppSelector(selectRoom)
+  const { allRooms } = useAppSelector(selectRoom);
 
   React.useEffect(() => {
     dispatch(
@@ -21,35 +23,21 @@ const Desktop = () => {
     );
   }, []);
 
-  React.useEffect(() => {
-    const storedAccount = getLocalStorage('account')
-
-    const getAllRooms = async () => {
-      await dispatch(getAllRoomsThunk({}));
-    }
-
-    const getUser = async () => {
-      await storedAccount?.user.id && dispatch(getUserById({ id: storedAccount?.user.id }))
-    }
-
-    getAllRooms();
-    getUser()
-  }, [])
-
   const renderedAllRooms = allRooms.map(room => {
     return (
       <CCol span={6} key={room.id}>
-        <HomeItem
-          numberOfComments=''
-          roomId={room.id}
-          roomName={room.tenPhong}
-          bedAmount={''}
-          roomDescription={'Chủ nhà: Bill Gate'}
-          roomImage={room.hinhAnh}
-          roomPrice={room.giaTien}
-          arriveDate='Ngày 02'
-          departureDate='Ngày 06 tháng 10'
-        ></HomeItem>
+        <HomeItemBox>
+          <HomeItem
+            numberOfComments=''
+            roomId={room.id}
+            roomName={room.tenPhong}
+            roomDescription={room.moTa}
+            roomImage={room.hinhAnh}
+            roomPrice={room.giaTien}
+            arriveDate='Ngày 02'
+            departureDate='Ngày 06 tháng 10'
+          ></HomeItem>
+        </HomeItemBox>
       </CCol>
     )
   })

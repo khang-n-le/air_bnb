@@ -2,7 +2,6 @@ import { Button, Card } from "antd";
 import { styled } from "styled-components";
 
 export const CardItem = styled(Card)`
-    margin-bottom: 48px;
     position: relative;
 
     &.ant-card .ant-card-cover img, &.ant-card .ant-card-cover img+.ant-image-mask {

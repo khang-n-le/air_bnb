@@ -60,13 +60,13 @@ const HomeItem = (props: Props) => {
         </RateWrapper>
       </CardTitleWrapper>
       <CardDescription>{props.roomDescription}</CardDescription>
-      {props.bedAmount?.length == 0 ? (
-        ''
+      {!props.bedAmount ? (
+        <></>
       ) : (
         <CardBedAmount>{props.bedAmount} giường</CardBedAmount>
       )}
-      {props.numberOfGuests?.length == 0 ? (
-        ''
+      {!props.numberOfGuests ? (
+        <></>
       ) : (
         <CardNumberOfGuests>{props.numberOfGuests} khách</CardNumberOfGuests>
       )}
