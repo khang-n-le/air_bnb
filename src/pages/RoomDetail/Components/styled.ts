@@ -186,9 +186,9 @@ export const OrderWrapper = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  margin-top: 48px;
+
   position: sticky;
-  top: 0px;
+  top: 100px;
 `;
 
 export const PriceWrapper = styled.div`
@@ -226,11 +226,14 @@ export const PriceAndRatingWrapper = styled.div`
   margin-bottom: 24px;
 `;
 
-export const CRangePicker = styled(RangePicker)`
+export const CRangePicker = styled(RangePicker)<{ isOpenPopup: boolean }>`
   height: 56px;
   width: 100%;
   align-items: end;
   padding: 0px;
+
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 
   .ant-picker-input {
     height: 100%;
@@ -268,6 +271,10 @@ export const RangePickerWrapper = styled.div`
   .ant-picker-suffix,
   .ant-picker-suffix {
     display: none;
+  }
+
+  .ant-picker-active-bar {
+    width: 110px !important;
   }
 `;
 
@@ -330,4 +337,237 @@ export const CalendarWrapper = styled.div`
   .ant-picker-cell-range-end > .ant-picker-cell-inner {
     background-color: black;
   }
+`;
+
+export const ChoiceCustomerWrapper = styled.div<{ isOpenPopup: boolean }>`
+  position: relative;
+  border: 1px solid rgb(217, 217, 217);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px 36px 10px 12px;
+
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+  ${p => p.isOpenPopup && `  border-color: #4096ff;`};
+
+  &:hover {
+    border-color: #4096ff;
+  }
+`;
+
+export const CustomerText = styled.p`
+  font-size: ${p => p.theme.font.size.xxs};
+  font-weight: ${p => p.theme.font.weight.medium};
+`;
+
+export const CustomerTitle = styled.div`
+  display: flex;
+`;
+
+export const Customer = styled.p`
+  font-size: ${p => p.theme.font.size.xs};
+  line-height: 18px !important;
+`;
+
+export const CustomerWrapper = styled.div`
+  position: relative;
+`;
+
+export const IconArrowDownWrapper = styled.div<{ isOpenPopup: boolean }>`
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+
+  transform: ${p => (p.isOpenPopup ? 'rotate(180deg)' : 'rotate(0deg)')};
+`;
+
+export const PopupChoiceCustomer = styled.div<{ isOpenPopup: boolean }>`
+  box-shadow:
+    rgba(0, 0, 0, 0.15) 0px 2px 6px,
+    rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
+  box-sizing: border-box !important;
+  padding: 16px;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 280px;
+  background-color: white;
+
+  position: absolute;
+  top: 58px;
+  right: 0px;
+
+  display: ${p => (p.isOpenPopup ? 'flex' : 'none')};
+`;
+
+export const PopupItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const CustomerTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PopupCustomerText = styled.p`
+  font-weight: ${p => p.theme.font.weight.bold};
+  font-size: ${p => p.theme.font.size.sm};
+`;
+
+export const PopupCustomerDetailText = styled.p`
+  font-size: ${p => p.theme.font.size.xs};
+  font-weight: ${p => p.theme.font.weight.normal};
+  line-height: 18px;
+  color: rgb(34, 34, 34);
+`;
+
+export const RaiseButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+`;
+
+export const RaiseButton = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #b0b0b0;
+  cursor: pointer;
+  display: flex;
+  //align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: ${p => p.theme.font.size.lg};
+
+  p {
+    line-height: 26px;
+  }
+`;
+
+export const CustomerCount = styled.div``;
+
+export const PopupDescription = styled.p`
+  color: rgb(34, 34, 34);
+  font-size: ${p => p.theme.font.size.xxs};
+  font-weight: ${p => p.theme.font.weight.normal};
+  line-height: 16px;
+`;
+
+export const CloseButton = styled.button`
+  cursor: pointer;
+  text-decoration: underline;
+
+  font-weight: ${p => p.theme.font.weight.bold};
+  width: fit-content;
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: none;
+
+  &:hover {
+    background-color: #f7f7f7;
+  }
+`;
+
+export const CloseButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const BookRoomButton = styled.button`
+  background-color: ${p => p.theme.colors.primary.main};
+  color: white;
+  padding: 14px 24px;
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+
+  font-size: ${p => p.theme.font.size.sm};
+  font-weight: ${p => p.theme.font.weight.bold};
+  line-height: 20px;
+  border: none;
+  margin-top: 16px;
+  cursor: pointer;
+`;
+
+export const DeductionWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+`;
+
+export const Deduction = styled.p``;
+
+export const RoomCostWrapper = styled.div`
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  color: rgb(34, 34, 34);
+
+  &:nth-child(2) {
+    margin-top: 16px;
+  }
+`;
+
+export const TitleCost = styled.p`
+  font-size: ${p => p.theme.font.size.sm};
+  font-weight: ${p => p.theme.font.weight.normal};
+  line-height: 20px;
+  text-decoration: underline;
+`;
+
+export const RoomCost = styled.p`
+  font-size: ${p => p.theme.font.size.sm};
+  font-weight: ${p => p.theme.font.weight.normal};
+  line-height: 20px;
+`;
+
+export const CostWrapper = styled.div`
+  margin-top: 24px;
+`;
+
+export const HorizontalLine = styled.div`
+  width: 100%;
+  border-top: 1px solid rgb(113, 113, 113);
+  margin: 24px 0px;
+`;
+
+export const TotalTitle = styled.p`
+  font-size: 16px !important;
+  line-height: 20px !important;
+  color: rgb(34, 34, 34) !important;
+  font-weight: ${p => p.theme.font.weight.bold} !important;
+`;
+
+export const TotalCost = styled.p`
+  font-size: 16px !important;
+  line-height: 20px !important;
+  color: rgb(34, 34, 34) !important;
+  font-weight: ${p => p.theme.font.weight.bold} !important;
+`;
+
+export const RenderDate = styled.div`
+  border-radius: 50%;
+  background-color: rgb(39, 39, 39);
+  width: 30px;
+  height: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 12px;
+  z-index: 10;
+  position: relative;
+`;
+
+export const MessageTitle = styled.h2`
+  font-weight: ${p => p.theme.font.weight.bold};
+  font-size: ${p => p.theme.font.size.sm};
 `;

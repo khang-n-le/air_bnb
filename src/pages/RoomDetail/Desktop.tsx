@@ -13,13 +13,14 @@ import {
   ShareItemWrapper,
   ShareWrapper,
   Title,
+  TitleWrapper,
   Wrapper,
 } from './styled';
 import {
   HeartIcon,
   MedalIcon,
-  MedalOutLineIcon,
   StarIcon,
+  TranslateIcon,
   UploadIcon,
 } from 'components';
 import { theme } from 'styled';
@@ -28,15 +29,36 @@ import { Col, Row } from 'antd';
 import { RoomDetailInfo } from './Components';
 import Comment from './Components/Comment';
 import Order from './Components/Order';
+import { CUSTOMER_TYPE } from 'utils';
 
 interface DesktopType {
   data: any;
+  handleChangeCustomer: (isPlus: boolean, customerType: CUSTOMER_TYPE) => void;
+  adults: number;
+  babies: number;
+  children: number;
+  pets: number;
+  handleOrder: (startDay: string, endDay: string) => void;
+  isSuccess: boolean;
 }
 
-const Desktop = ({ data }: DesktopType) => {
+const Desktop = ({
+  data,
+  handleChangeCustomer,
+  adults,
+  babies,
+  children,
+  pets,
+  handleOrder,
+  isSuccess,
+}: DesktopType) => {
   return (
     <Wrapper>
-      <Title>{data.tenPhong}</Title>
+      <TitleWrapper>
+        <TranslateIcon color={'#000'} />
+        <Title>{data.tenPhong}</Title>
+      </TitleWrapper>
+
       <InteractWrapper>
         <RateWrapper>
           <p>
@@ -116,8 +138,16 @@ const Desktop = ({ data }: DesktopType) => {
         </Col>
         <Col span={10}>
           <OrderWrapper>
-            {' '}
-            <Order data={data}></Order>
+            <Order
+              isSuccess={isSuccess}
+              adults={adults}
+              babies={babies}
+              children={children}
+              pets={pets}
+              handleChangeCustomer={handleChangeCustomer}
+              data={data}
+              handleOrder={handleOrder}
+            ></Order>
           </OrderWrapper>
         </Col>
       </Row>

@@ -13,4 +13,24 @@ export const commentApi = {
       throw error;
     }
   },
+  uploadCommentByRoomId: async (data: CommentType) => {
+    let url = pathname;
+
+    try {
+      const response = await airBnbService.post(url, data);
+
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
+
+export interface CommentType {
+  id?: string;
+  maPhong: string;
+  maNguoiBinhLuan: string;
+  ngayBinhLuan: string;
+  noiDung: string;
+  saoBinhLuan?: number;
+}

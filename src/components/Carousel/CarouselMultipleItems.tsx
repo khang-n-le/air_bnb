@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { CSlider } from './styled';
+import { CSlider, Wrapper } from './styled';
 
 interface CarouselMultipleItems {
   children: ReactElement[];
@@ -36,15 +36,10 @@ const CarouselMultipleItems = ({
     windowHeight();
   }, [window.innerWidth]);
 
-  // React.useEffect(() => {}, [
-  //   window.document.getElementsByClassName('slick-list')[0]?.clientWidth,
-  // ]);
-
   return (
-    <>
-      <h2> Multiple items </h2>
+    <Wrapper>
       <CSlider {...settings}>{children}</CSlider>
-    </>
+    </Wrapper>
   );
 };
 
