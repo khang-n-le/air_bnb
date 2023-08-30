@@ -273,10 +273,6 @@ export const RangePickerWrapper = styled.div`
     display: none;
   }
 
-  //.ant-picker-active-bar:nth-child(2) {
-  //  left: 116px !important;
-  //}
-
   .ant-picker-active-bar {
     width: 110px !important;
   }

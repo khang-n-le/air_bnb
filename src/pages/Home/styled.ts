@@ -17,14 +17,6 @@ export const Wrapper = styled.div`
     z-index: 100;
     width: initial;
   }
-
-  //.slick-next {
-  //  right: -20px !important;
-  //}
-  //
-  //.slick-prev {
-  //  left: -25px;
-  //}
 `;
 
 export const RoomsSection = styled.section`
