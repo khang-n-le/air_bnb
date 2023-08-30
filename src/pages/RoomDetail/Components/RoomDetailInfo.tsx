@@ -35,7 +35,6 @@ import {
   WifiIcon,
 } from 'components';
 import { theme } from 'styled';
-import Comment from './Comment';
 
 const RoomDetailInfo = ({ data }: { data: any }) => {
   return (
@@ -146,7 +145,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               </ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -159,7 +157,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>Wi-fi</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -172,7 +169,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>Bể bơi Chung –</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -185,19 +181,22 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>TV</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
-          <ExtensionsItemWrapper span={12}>
-            <ExtensionsItem>
-              <IconWrapper>
-                <AirConditionerIcon
-                  width={24}
-                  height={24}
-                  color={theme.colors.black}
-                ></AirConditionerIcon>
-              </IconWrapper>
-              <ExtensionsItemTitle>Điều hòa nhiệt độ</ExtensionsItemTitle>
-            </ExtensionsItem>
-          </ExtensionsItemWrapper>
+          {data.dieuHoa ? (
+            <ExtensionsItemWrapper span={12}>
+              <ExtensionsItem>
+                <IconWrapper>
+                  <AirConditionerIcon
+                    width={24}
+                    height={24}
+                    color={theme.colors.black}
+                  ></AirConditionerIcon>
+                </IconWrapper>
+                <ExtensionsItemTitle>Điều hòa nhiệt độ</ExtensionsItemTitle>
+              </ExtensionsItem>
+            </ExtensionsItemWrapper>
+          ) : (
+            <></>
+          )}
 
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
@@ -213,7 +212,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               </ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -226,7 +224,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>Sân sau</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -239,7 +236,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>Máy sấy tóc</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>
@@ -252,7 +248,6 @@ const RoomDetailInfo = ({ data }: { data: any }) => {
               <ExtensionsItemTitle>Bữa sáng</ExtensionsItemTitle>
             </ExtensionsItem>
           </ExtensionsItemWrapper>
-
           <ExtensionsItemWrapper span={12}>
             <ExtensionsItem>
               <IconWrapper>

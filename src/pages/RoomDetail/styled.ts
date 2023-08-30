@@ -1,6 +1,20 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  margin: 80px auto 0px;
+
+  width: 100%;
+  max-width: 1120px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 1rem;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+`;
 
 export const Title = styled.h1`
   font-weight: ${p => p.theme.font.weight.bold};
@@ -112,4 +126,5 @@ export const OrderWrapper = styled.div`
   position: relative;
   height: 100%;
   margin-left: 20%;
+  padding-top: 48px;
 `;

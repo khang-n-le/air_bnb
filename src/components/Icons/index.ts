@@ -24,7 +24,8 @@ export { HairDryerIcon } from './HairDryerIcon';
 export { BreakFastIcon } from './BreakFastIcon';
 export { SmokeAlarmIcon } from './SmokeAlarmIcon';
 export { KeyBoardIcon } from './KeyBoardIcon';
-export { DangerAlertIcon } from './DangerAlertIcon'
-export { HeartOutlinedIcon } from './HeartOutlinedIcon'
-export { ProfileUser } from './ProfileUser'
-export { Bars } from './Bars'
+export { DangerAlertIcon } from './DangerAlertIcon';
+export { HeartOutlinedIcon } from './HeartOutlinedIcon';
+export { ProfileUser } from './ProfileUser';
+export { Bars } from './Bars';
+export { ArrowBottomIcon } from './ArrowBottomIcon';

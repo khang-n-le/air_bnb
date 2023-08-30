@@ -13,15 +13,20 @@ import {
   TotalComment,
   TotalContent,
 } from './styled';
-import { findCommentByRoomId } from 'slice';
-import { useAppDispatch } from 'app/hooks';
-import { Row, Col, Input, Button } from 'antd';
-import defaultImage from 'public/defaultImage.jpg';
+import {
+  findCommentByRoomId,
+  selectAccount,
+  uploadCommentByRoomId,
+} from 'slice';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { Row, Col, Input } from 'antd';
 import { ConvertDateToVNDate } from 'utils';
 
 const Comment = ({ id }: { id: string }) => {
   const dispatch = useAppDispatch();
   const [data, setData] = React.useState<any[]>([]);
+  const account = useAppSelector(selectAccount);
+  const [comment, setComment] = React.useState('');
 
   React.useEffect(() => {
     const getCommentById = async () => {
@@ -37,6 +42,44 @@ const Comment = ({ id }: { id: string }) => {
       getCommentById();
     }
   }, [id]);
+
+  const handleUploadComment = async () => {
+    if (comment && account?.account?.user?.id) {
+      try {
+        const date = new Date();
+
+        const result: any = await dispatch(
+          uploadCommentByRoomId({
+            maPhong: id,
+            maNguoiBinhLuan: account?.account?.user?.id,
+            ngayBinhLuan: date.toString(),
+            noiDung: comment,
+          })
+        ).unwrap();
+
+        if (result?.content) {
+          data.push({
+            avatar: account?.account?.user?.avatar,
+            id: result.content.id,
+            ngayBinhLuan:
+              `${date.getDate()}` +
+              '/' +
+              `${date.getMonth()}` +
+              '/' +
+              `${date.getFullYear()}`,
+            noiDung: result.content.noiDung,
+            saoBinhLuan: result.content.saoBinhLuan,
+            tenNguoiBinhLuan: account?.account?.user?.name,
+          });
+
+          setData([...data]);
+          setComment('');
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
 
   return (
     <CommentWrapper>
@@ -58,7 +101,7 @@ const Comment = ({ id }: { id: string }) => {
                 <CommentContentWrapper>
                   <CommentUsername>{item.tenNguoiBinhLuan}</CommentUsername>
                   <CommentDate>
-                    {ConvertDateToVNDate(item.ngayBinhLuan)}
+                    {ConvertDateToVNDate(item?.ngayBinhLuan)}
                   </CommentDate>
                 </CommentContentWrapper>
               </CommentUserWrapper>
@@ -67,18 +110,31 @@ const Comment = ({ id }: { id: string }) => {
           );
         })}
       </Row>
-      <CreateCommentWrapper>
-        <CommentUserAvatar
-          src={`${window.location.origin}/defaultImage.jpg`}
-        ></CommentUserAvatar>
-        <SubmitCommentWrapper>
-          <Input.TextArea
-            placeholder="Autosize height with minimum and maximum number of lines"
-            autoSize={{ minRows: 4, maxRows: 6 }}
-          />
-          <SubmitButton>Thêm bình luận</SubmitButton>
-        </SubmitCommentWrapper>
-      </CreateCommentWrapper>
+      {account.account ? (
+        <CreateCommentWrapper>
+          <CommentUserAvatar
+            src={
+              account.account?.user.avatar ||
+              `${window.location.origin}/defaultImage.jpg`
+            }
+          ></CommentUserAvatar>
+          <SubmitCommentWrapper>
+            <Input.TextArea
+              placeholder="Autosize height with minimum and maximum number of lines"
+              autoSize={{ minRows: 4, maxRows: 6 }}
+              onChange={e => {
+                setComment(e.target.value);
+              }}
+              value={comment}
+            />
+            <SubmitButton onClick={e => handleUploadComment()}>
+              Thêm bình luận
+            </SubmitButton>
+          </SubmitCommentWrapper>
+        </CreateCommentWrapper>
+      ) : (
+        <></>
+      )}
     </CommentWrapper>
   );
 };
