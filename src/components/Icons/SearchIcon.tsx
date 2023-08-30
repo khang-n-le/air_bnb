@@ -8,7 +8,7 @@ export const SearchIcon = ({
     height,
     className,
     styles,
-    color = theme.colors.text.primary,
+    color,
 }: IconProps) => {
     const DEFAULT_WIDTH = '20';
     const DEFAULT_COLOR = '#f1f1f1';

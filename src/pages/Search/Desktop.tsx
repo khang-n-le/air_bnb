@@ -18,6 +18,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { getRoomsByLocationThunk, selectRoom } from 'slice/roomSilce';
 import { HomeItem } from 'components';
+import { HomeItemBox } from 'pages/Home/styled';
 
 const Desktop = () => {
   const appDevice = useAppSelector(selectAppDevice);
@@ -46,15 +47,17 @@ const Desktop = () => {
   const roomsList = selectedRooms.rooms.map(room => {
     return (
       <CCol span={8} key={room.id}>
-        <HomeItem
-          numberOfComments="210"
-          roomId={room.id}
-          roomName={room.tenPhong}
-          bedAmount={room.giuong}
-          roomImage={room.hinhAnh}
-          roomDescription={room.moTa}
-          roomPrice={room.giaTien}
-        />
+        <HomeItemBox>
+          <HomeItem
+            numberOfComments="210"
+            roomId={room.id}
+            roomName={room.tenPhong}
+            bedAmount={room.giuong}
+            roomImage={room.hinhAnh}
+            roomDescription={room.moTa}
+            roomPrice={room.giaTien}
+          />
+        </HomeItemBox>
       </CCol>
     );
   });

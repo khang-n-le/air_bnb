@@ -42,7 +42,8 @@ const HomeItem = (props: Props) => {
               <HeartOutlinedIcon
                 width={24}
                 height={24}
-                styles={{ display: 'block' }}
+                styles={{ display: 'block', stroke: 'white', strokeWidth: 2 }}
+                color='rgba(0, 0, 0, 0.5)'
               />
             }
             shape="circle"

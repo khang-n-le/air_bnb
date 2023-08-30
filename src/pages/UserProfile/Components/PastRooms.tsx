@@ -9,7 +9,7 @@ import { CCol, CRow } from '../styled'
 import { HomeItem } from 'components'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { selectBookedRoom, setFilteredPastRooms } from 'slice/bookingSlice'
-import { getAllRoomsThunk, selectRoom } from 'slice'
+import { selectRoom } from 'slice'
 
 type Props = {}
 
@@ -34,7 +34,7 @@ const PastRooms = (props: Props) => {
         }
 
         filterRooms()
-    }, [pastRooms])
+    }, [])
 
     const renderedPastRooms = filteredPastRooms.map(pastRoom => (
         <CCol span={8} key={pastRoom.maPhong}>

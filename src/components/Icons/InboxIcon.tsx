@@ -3,27 +3,26 @@ import * as React from 'react';
 import { theme } from 'styled';
 import { IconProps } from './Icons';
 
-export const HeartOutlinedIcon = ({
+export const InboxIcon = ({
     width,
     height,
     className,
     color,
-    styles,
+    styles
 }: IconProps) => {
-    const DEFAULT_WIDTH = '20';
-
     return (
         <svg
+            width={width}
+            height={height}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
             aria-hidden="true"
             role="presentation"
             focusable="false"
-            fill={color}
-            width={width || DEFAULT_WIDTH}
-            height={height}
             style={styles}
+            fill={color}
         >
-            <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z"></path></svg>
-    );
-};
+            <path d="M26 2a5 5 0 0 1 5 4.78V21a5 5 0 0 1-4.78 5h-6.06L16 31.08 11.84 26H6a5 5 0 0 1-4.98-4.56L1 21.22V7a5 5 0 0 1 4.78-5H6zm0 2H6a3 3 0 0 0-3 2.82V21a3 3 0 0 0 2.82 3H12.8l3.2 3.92L19.2 24H26a3 3 0 0 0 3-2.82V7a3 3 0 0 0-2.82-3z"></path>
+        </svg>
+    )
+}

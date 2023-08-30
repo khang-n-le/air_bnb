@@ -28,7 +28,6 @@ const Desktop = (props: Props) => {
       <CCol span={6} key={room.id}>
         <HomeItemBox>
           <HomeItem
-            numberOfComments=''
             roomId={room.id}
             roomName={room.tenPhong}
             roomDescription={room.moTa}

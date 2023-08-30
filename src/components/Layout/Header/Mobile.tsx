@@ -19,6 +19,7 @@ import {
 } from './mobileStyled'
 import { SearchButton } from './styled'
 import { FilterIcon, SearchIcon } from 'components/Icons'
+import { theme } from 'styled'
 
 type Props = {}
 
@@ -29,7 +30,7 @@ const Mobile = (props: Props) => {
         <SearchButtonBox>
           <SearchButton style={{ width: '100%', height: '100%', backgroundColor: 'transparent', padding: '0' }}>
             <SearchIconBox>
-              <SearchIcon width={16} height={16} styles={{ display: 'block' }} />
+              <SearchIcon width={16} height={16} styles={{ display: 'block' }} color={theme.colors.text.primary} />
             </SearchIconBox>
             <SearchButtonContent>
               <AddressWrapper>
