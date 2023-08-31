@@ -64,7 +64,7 @@ const Comment = ({ id }: { id: string }) => {
             ngayBinhLuan:
               `${date.getDate()}` +
               '/' +
-              `${date.getMonth()}` +
+              `${date.getMonth() + 1}` +
               '/' +
               `${date.getFullYear()}`,
             noiDung: result.content.noiDung,
@@ -120,7 +120,7 @@ const Comment = ({ id }: { id: string }) => {
           ></CommentUserAvatar>
           <SubmitCommentWrapper>
             <Input.TextArea
-              placeholder="Autosize height with minimum and maximum number of lines"
+              placeholder="Thêm bình luận"
               autoSize={{ minRows: 4, maxRows: 6 }}
               onChange={e => {
                 setComment(e.target.value);
