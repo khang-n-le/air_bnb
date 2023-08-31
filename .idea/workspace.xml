@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="37f67e38-8e87-4081-98e3-36d8596e49c5" name="Changes" comment="add-hook">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Order.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Order.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/styled.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RoomDetail/Components/Comment.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,7 @@
       <workItem from="1693192755372" duration="6960000" />
       <workItem from="1693232415372" duration="2521000" />
       <workItem from="1693367924357" duration="12064000" />
-      <workItem from="1693465838086" duration="3154000" />
+      <workItem from="1693465838086" duration="3357000" />
     </task>
     <servers />
   </component>
