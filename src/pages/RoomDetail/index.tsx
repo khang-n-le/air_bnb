@@ -65,6 +65,10 @@ const RoomDetail = ({ match }: { match?: string }) => {
         ).unwrap();
 
         setIsSuccess(true);
+        setPets(0);
+        setAdults(1);
+        setChildren(0);
+        setBabies(0);
       }
     } catch (e) {
       console.log(e);

@@ -76,8 +76,9 @@ const Order = ({
 }) => {
   const [isOpenPopup, setIsOpenPopup] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [startDay, setStartDay] = React.useState('');
-  const [endDay, setEndDay] = React.useState('');
+  const [startDay, setStartDay] = React.useState<any>();
+  const [endDay, setEndDay] = React.useState<any>('');
+  const [withPicker, setWidthPicker] = React.useState(0);
   const [api, contextHolder] = notification.useNotification();
   const account = useAppSelector(selectAccount);
 
@@ -95,6 +96,8 @@ const Order = ({
   React.useEffect(() => {
     if (isSuccess) {
       openNotification();
+      setEndDay('');
+      setStartDay('');
     }
   }, [isSuccess]);
 
@@ -105,7 +108,7 @@ const Order = ({
   const handleBooking = async () => {
     try {
       if (startDay && endDay) {
-        handleOrder(startDay, endDay);
+        handleOrder(startDay.format(), endDay.format());
       }
     } catch (e) {
       console.log(e);
@@ -117,6 +120,14 @@ const Order = ({
       setIsOpenPopup(false);
     }
   });
+
+  React.useEffect(() => {
+    const rangePicker = window.document.getElementById('range-picker');
+
+    if (rangePicker) {
+      setWidthPicker(rangePicker.offsetWidth / 2 - 22);
+    }
+  }, []);
 
   return (
     <>
@@ -133,13 +144,14 @@ const Order = ({
             <Rating>(18 đánh giá)</Rating>
           </RatingWrapper>
         </PriceAndRatingWrapper>
-        <RangePickerWrapper>
+        <RangePickerWrapper id={'range-picker'} withPicker={withPicker}>
           <CRangePicker
             format={'DD-MM-YYYY'}
+            value={[startDay, endDay]}
             onChange={(dates, dateStrings) => {
               if (dates) {
-                dates[0] && setStartDay(dates[0].format());
-                dates[1] && setEndDay(dates[1].format());
+                dates[0] && setStartDay(dates[0]);
+                dates[1] && setEndDay(dates[1]);
               }
             }}
             isOpenPopup={isOpenPopup}

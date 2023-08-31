@@ -186,7 +186,7 @@ export const OrderWrapper = styled.div`
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-
+  min-width: 280px;
   position: sticky;
   top: 100px;
 `;
@@ -264,7 +264,7 @@ export const CRangePicker = styled(RangePicker)<{ isOpenPopup: boolean }>`
   }
 `;
 
-export const RangePickerWrapper = styled.div`
+export const RangePickerWrapper = styled.div<{ withPicker: number }>`
   display: flex;
 
   .ant-picker-range-separator,
@@ -274,7 +274,7 @@ export const RangePickerWrapper = styled.div`
   }
 
   .ant-picker-active-bar {
-    width: 110px !important;
+    width: ${p => (p.withPicker ? `${p.withPicker}px` : '0px')} !important;
   }
 `;
 
@@ -555,7 +555,7 @@ export const TotalCost = styled.p`
 
 export const RenderDate = styled.div`
   border-radius: 50%;
-  background-color: rgb(39, 39, 39);
+  background-color: #1677ff;
   width: 30px;
   height: 30px;
   color: white;
