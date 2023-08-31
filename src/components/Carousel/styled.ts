@@ -8,7 +8,11 @@ export const CSlider = styled(Slider)`
 `;
 
 export const Wrapper = styled.div`
-  padding: 0px 50px;
+  padding: 20px 50px;
+  position: sticky;
+  top: 80px;
+  background-color: white;
+  z-index: 90;
 
   @media only screen and (max-width: 768px) {
     padding: 0px 40px;

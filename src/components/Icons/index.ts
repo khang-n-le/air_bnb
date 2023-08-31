@@ -1,5 +1,3 @@
-import { HeartOutlinedIcon } from './HeartOutlinedIcon';
-
 export { LogoBrandIcon } from './LogoBrandIcon';
 export { GlobeIcon } from './GlobeIcon';
 export { FacebookSquareIcon } from './FacebookSquareIcon';
@@ -28,4 +26,9 @@ export { DangerAlertIcon } from './DangerAlertIcon';
 export { HeartOutlinedIcon } from './HeartOutlinedIcon';
 export { ProfileUser } from './ProfileUser';
 export { Bars } from './Bars';
+export { SearchIcon } from './SearchIcon';
+export { FilterIcon } from './FilterIcon';
+export { AirBnbLogoIcon } from './AirBnbLogoIcon';
+export { InboxIcon } from './InboxIcon'
+export { UserIcon } from './UserIcon';
 export { ArrowBottomIcon } from './ArrowBottomIcon';

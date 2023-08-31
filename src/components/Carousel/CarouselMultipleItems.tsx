@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, createRef, useRef } from 'react';
 import { CSlider, Wrapper } from './styled';
 
 interface CarouselMultipleItems {
@@ -27,7 +27,7 @@ const CarouselMultipleItems = ({
       window.document.getElementsByClassName('slick-list')[0]?.clientWidth &&
         setCountSlider(
           window.document.getElementsByClassName('slick-list')[0].clientWidth /
-            100
+          100
         );
     };
 

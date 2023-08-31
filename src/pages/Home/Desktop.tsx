@@ -1,11 +1,4 @@
-import {
-  CCol,
-  CRow,
-  Container,
-  RoomsContent,
-  RoomsSection,
-  Wrapper,
-} from './styled';
+import { CCol, CRow, Container, HomeItemBox, RoomsContent, RoomsSection, Wrapper } from './styled';
 import { CarouselMultipleItems, CategoryItem, HomeItem } from 'components';
 import { CarouselData } from './data';
 import React from 'react';
@@ -20,7 +13,9 @@ import {
 } from 'slice';
 import { getLocalStorage } from 'utils';
 
-const Desktop = () => {
+interface Props { }
+
+const Desktop = (props: Props) => {
   const dispatch = useAppDispatch();
   const appDevice = useAppSelector(selectAppDevice);
   const { allRooms } = useAppSelector(selectRoom);
@@ -51,20 +46,21 @@ const Desktop = () => {
     getUser();
   }, []);
 
+
   const renderedAllRooms = allRooms.map(room => {
     return (
       <CCol span={6} key={room.id}>
-        <HomeItem
-          numberOfComments=""
-          roomId={room.id}
-          roomName={room.tenPhong}
-          bedAmount={''}
-          roomDescription={'Chủ nhà: Bill Gate'}
-          roomImage={room.hinhAnh}
-          roomPrice={room.giaTien}
-          arriveDate="Ngày 02"
-          departureDate="Ngày 06 tháng 10"
-        ></HomeItem>
+        <HomeItemBox>
+          <HomeItem
+            roomId={room.id}
+            roomName={room.tenPhong}
+            roomDescription={room.moTa}
+            roomImage={room.hinhAnh}
+            roomPrice={room.giaTien}
+            arriveDate='Ngày 02'
+            departureDate='Ngày 06 tháng 10'
+          ></HomeItem>
+        </HomeItemBox>
       </CCol>
     );
   });

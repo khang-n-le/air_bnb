@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 `;
 
 export const RoomsSection = styled.section`
-  margin: 3rem 0 0;
+  margin: 1rem 0 0;
 `;
 
 export const Container = styled.div<{
@@ -36,3 +36,7 @@ export const RoomsContent = styled.div``;
 export const CRow = styled(Row)``;
 
 export const CCol = styled(Col)``;
+
+export const HomeItemBox = styled.div`
+  margin-bottom: 48px;
+`

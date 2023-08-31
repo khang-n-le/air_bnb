@@ -42,7 +42,8 @@ const HomeItem = (props: Props) => {
               <HeartOutlinedIcon
                 width={24}
                 height={24}
-                styles={{ display: 'block' }}
+                styles={{ display: 'block', stroke: 'white', strokeWidth: 2 }}
+                color='rgba(0, 0, 0, 0.5)'
               />
             }
             shape="circle"
@@ -60,13 +61,13 @@ const HomeItem = (props: Props) => {
         </RateWrapper>
       </CardTitleWrapper>
       <CardDescription>{props.roomDescription}</CardDescription>
-      {props.bedAmount?.length == 0 ? (
-        ''
+      {!props.bedAmount ? (
+        <></>
       ) : (
         <CardBedAmount>{props.bedAmount} giường</CardBedAmount>
       )}
-      {props.numberOfGuests?.length == 0 ? (
-        ''
+      {!props.numberOfGuests ? (
+        <></>
       ) : (
         <CardNumberOfGuests>{props.numberOfGuests} khách</CardNumberOfGuests>
       )}

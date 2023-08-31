@@ -38,7 +38,7 @@ export const bookingRoom = createAsyncThunk(
 );
 
 interface InitialState {
-  pastRooms: [];
+  pastRooms: any[];
   filteredPastRooms: any[];
 }
 

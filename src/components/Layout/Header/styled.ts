@@ -472,7 +472,7 @@ align-items: center;
 
     &:hover {
         color: ${p => p.theme.colors.white} !important;
-        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.main}, ${p => p.theme.colors.secondary.light});
+        background-image: linear-gradient(to right, ${p => p.theme.colors.primary.light}, ${p => p.theme.colors.primary.main});
     }
 `
 
