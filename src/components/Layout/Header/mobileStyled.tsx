@@ -2,8 +2,12 @@ import { Button } from "antd";
 import { styled } from "styled-components";
 
 export const SearchButtonContainer = styled.div`
-    padding: 0.875rem 1.5rem 0 1.5rem;
+    padding: 0.875rem 1.5rem;
     background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 `
 
 export const SearchBar = styled.div`

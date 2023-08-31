@@ -3,7 +3,14 @@ import { CarouselMultipleItems, CategoryItem, HomeItem } from 'components';
 import { CarouselData } from './data';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { getAllRoomsThunk, getUserById, handleChangeWidth, selectAppDevice, selectRoom, selectUser } from 'slice';
+import {
+  getAllRoomsThunk,
+  getUserById,
+  handleChangeWidth,
+  selectAppDevice,
+  selectRoom,
+  selectUser,
+} from 'slice';
 import { getLocalStorage } from 'utils';
 
 interface Props { }
@@ -18,10 +25,27 @@ const Desktop = (props: Props) => {
       handleChangeWidth({
         maxWidth: '2360px',
         paddingLeft: '80px',
-        paddingRight: '80px'
+        paddingRight: '80px',
       })
     );
   }, []);
+
+  React.useEffect(() => {
+    const storedAccount = getLocalStorage('account');
+
+    const getAllRooms = async () => {
+      await dispatch(getAllRoomsThunk({}));
+    };
+
+    const getUser = async () => {
+      (await storedAccount?.user.id) &&
+        dispatch(getUserById({ id: storedAccount?.user.id }));
+    };
+
+    getAllRooms();
+    getUser();
+  }, []);
+
 
   const renderedAllRooms = allRooms.map(room => {
     return (
@@ -38,12 +62,12 @@ const Desktop = (props: Props) => {
           ></HomeItem>
         </HomeItemBox>
       </CCol>
-    )
-  })
+    );
+  });
 
   return (
     <Wrapper>
-      <CarouselMultipleItems slidesToShow={10}>
+      <CarouselMultipleItems>
         {CarouselData.map((item, index) => {
           return (
             <CategoryItem
@@ -55,11 +79,12 @@ const Desktop = (props: Props) => {
         })}
       </CarouselMultipleItems>
       <RoomsSection>
-        <Container paddingLeft={appDevice.paddingLeft} paddingRight={appDevice.paddingRight}>
+        <Container
+          paddingLeft={appDevice.paddingLeft}
+          paddingRight={appDevice.paddingRight}
+        >
           <RoomsContent>
-            <CRow gutter={24}>
-              {renderedAllRooms}
-            </CRow>
+            <CRow gutter={24}>{renderedAllRooms}</CRow>
           </RoomsContent>
         </Container>
       </RoomsSection>

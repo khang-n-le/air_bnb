@@ -7,7 +7,7 @@ import {
     SearchIcon,
     UserIcon,
 } from 'components/Icons'
-import { CTabBar, CTabBarItem } from './mobileStyled'
+import { CTabBar } from './mobileStyled'
 
 type Props = {}
 
@@ -43,7 +43,7 @@ const TabBarMobile = (props: Props) => {
     return (
         <CTabBar style={{ position: 'fixed', bottom: '0', width: '100%', backgroundColor: 'white', zIndex: '1' }}>
             {tabs.map(item => (
-                <CTabBarItem key={item.key} icon={item.icon} title={item.title} style={{ padding: '16px 8px' }} />
+                <TabBar.Item key={item.key} icon={item.icon} title={item.title} style={{ padding: '12px 8px' }} />
             ))}
         </CTabBar>
     )

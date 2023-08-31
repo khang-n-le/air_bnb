@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 export const MainBox = styled.div`
     padding: 0 24px;
     margin-bottom: 32px;
-    margin-top: 24px;
+    margin-top: 12px;
 `
 
 export const RoomsContainer = styled.div``

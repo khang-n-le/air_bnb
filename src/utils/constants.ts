@@ -10,3 +10,10 @@ export enum DEVICES {
   TABLET,
   MOBILE,
 }
+
+export enum CUSTOMER_TYPE {
+  ADULTS,
+  CHILDREN,
+  BABIES,
+  PETS,
+}
