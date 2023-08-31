@@ -31,5 +31,4 @@ export { FilterIcon } from './FilterIcon';
 export { AirBnbLogoIcon } from './AirBnbLogoIcon';
 export { InboxIcon } from './InboxIcon'
 export { UserIcon } from './UserIcon';
-export { WishlistIcon } from './WishlistIcon';
 export { ArrowBottomIcon } from './ArrowBottomIcon';
